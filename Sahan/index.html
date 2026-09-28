@@ -9,75 +9,70 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            SAHAN<span>.</span>
+        </div>
 
-            <a href="#" class="logo">
-                SAHAN<span>.</span>
-            </a>
-
-            <nav>
-                <a href="#recipes">Recipes</a>
-                <a href="#kitchen">My Kitchen</a>
-            </nav>
-
-            <button class="saved-btn" id="savedBtn">
-                Saved <span id="savedCount">0</span>
+        <nav>
+            <button class="nav-btn active" data-section="recipes">
+                Recipes
             </button>
 
-        </div>
+            <button class="nav-btn" data-section="kitchen">
+                My Kitchen
+            </button>
+        </nav>
+
+        <button class="saved-btn" id="savedBtn">
+            ♥ <span id="savedCount">0</span>
+        </button>
     </header>
 
 
-    <!-- HERO -->
     <main>
 
+        <!-- HERO -->
         <section class="hero">
 
             <div class="hero-content">
 
-                <p class="eyebrow">WELCOME BACK, CHEF NASSER ✦</p>
+                <p class="eyebrow">CHEF NASSER</p>
 
-                <h1>
-                    Hungry but don't want
-                    <em>to think?</em>
-                </h1>
+                <h1>Hungry, Chef?</h1>
 
                 <p class="hero-description">
-                    We've got dinner handled. Tell us what kind of mood
-                    you're in — or let Sahan decide for you.
+                    Don't think. Let Sahan pick.
                 </p>
 
                 <button class="decision-btn" id="surpriseBtn">
-                    ✦ Pick something for me
+                    <span>✦</span>
+                    Pick for me
                 </button>
 
-            </div>
-
-            <div class="hero-note">
-                <span>Today's rule</span>
-                <strong>No overthinking.</strong>
-                <p>Just good food.</p>
             </div>
 
         </section>
 
 
-        <!-- QUICK MOODS -->
+        <!-- MOODS -->
         <section class="moods">
 
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">WHAT'S THE VIBE?</p>
-                    <h2>So, Chef Nasser...</h2>
+                    <p class="eyebrow">MOOD</p>
+                    <h2>What's the vibe?</h2>
                 </div>
             </div>
 
@@ -85,70 +80,23 @@
 
                 <button class="mood-card" data-filter="quick">
                     <span class="mood-icon">⚡</span>
-                    <strong>I'm in a hurry</strong>
-                    <small>Something quick</small>
-                </button>
-
-                <button class="mood-card" data-filter="one-pot">
-                    <span class="mood-icon">🥘</span>
-                    <strong>One pot please</strong>
-                    <small>Less washing up</small>
+                    <span>Quick</span>
                 </button>
 
                 <button class="mood-card" data-filter="chicken">
                     <span class="mood-icon">🍗</span>
-                    <strong>Give me chicken</strong>
-                    <small>You know the craving</small>
+                    <span>Chicken</span>
+                </button>
+
+                <button class="mood-card" data-filter="one-pot">
+                    <span class="mood-icon">🥘</span>
+                    <span>One pot</span>
                 </button>
 
                 <button class="mood-card" data-filter="meat-free">
                     <span class="mood-icon">🌿</span>
-                    <strong>No meat today</strong>
-                    <small>Keep it plant-friendly</small>
+                    <span>No meat</span>
                 </button>
-
-                <button class="mood-card surprise-small" id="surpriseMood">
-                    <span class="mood-icon">😌</span>
-                    <strong>Surprise me</strong>
-                    <small>I trust you</small>
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- FEATURED -->
-        <section class="featured">
-
-            <div class="featured-card">
-
-                <div class="featured-image">
-                    <span>🍗</span>
-                </div>
-
-                <div class="featured-content">
-
-                    <p class="eyebrow">TONIGHT'S EASY PICK</p>
-
-                    <h2>Chicken Suqaar</h2>
-
-                    <p>
-                        Tender chicken, colourful vegetables and warm spices.
-                        Simple enough for a hungry Chef Nasser.
-                    </p>
-
-                    <div class="recipe-meta">
-                        <span>⏱ 30 min</span>
-                        <span>🍳 Easy</span>
-                        <span>🍗 Chicken</span>
-                    </div>
-
-                    <button class="outline-btn" data-recipe="chicken-suqaar">
-                        Let's cook this →
-                    </button>
-
-                </div>
 
             </div>
 
@@ -161,54 +109,26 @@
             <div class="section-heading recipe-heading">
 
                 <div>
-                    <p class="eyebrow">WHEN YOU ACTUALLY WANT TO CHOOSE</p>
-                    <h2>Things Nasser might actually eat.</h2>
+                    <p class="eyebrow">RECIPES</p>
+                    <h2>Or pick yourself.</h2>
                 </div>
 
                 <div class="search-box">
                     <input
                         type="text"
                         id="searchInput"
-                        placeholder="Search recipes..."
+                        placeholder="Search..."
                     >
+
                     <span>⌕</span>
                 </div>
 
             </div>
 
 
-            <!-- FILTERS -->
-            <div class="filters">
-
-                <button class="filter-btn active" data-filter="all">
-                    All
-                </button>
-
-                <button class="filter-btn" data-filter="chicken">
-                    Chicken
-                </button>
-
-                <button class="filter-btn" data-filter="one-pot">
-                    One pot
-                </button>
-
-                <button class="filter-btn" data-filter="meat-free">
-                    Meat-free
-                </button>
-
-                <button class="filter-btn" data-filter="quick">
-                    Quick
-                </button>
-
+            <div class="recipe-grid" id="recipeGrid">
+                <!-- Recipes inserted by JavaScript -->
             </div>
-
-
-            <div class="recipe-grid" id="recipeGrid"></div>
-
-            <p class="empty-message" id="emptyMessage">
-                Hmm. Even the kitchen is confused.
-                Try another search.
-            </p>
 
         </section>
 
@@ -218,54 +138,55 @@
 
             <div class="kitchen-card">
 
-                <div>
-                    <p class="eyebrow">NASSER'S KITCHEN</p>
+                <div class="kitchen-top">
 
-                    <h2>
-                        You're doing alright,
-                        <em>Chef.</em>
-                    </h2>
+                    <div>
+                        <p class="eyebrow">MY KITCHEN</p>
+                        <h2>Nasser's kitchen</h2>
+                    </div>
 
-                    <p>
-                        Cook recipes to collect points and unlock
-                        little kitchen badges.
-                    </p>
+                    <div class="points">
+                        <strong id="pointsValue">0</strong>
+                        <span>points</span>
+                    </div>
+
                 </div>
+
 
                 <div class="progress-area">
 
                     <div class="progress-label">
-                        <span id="pointsText">0 points</span>
-                        <span id="progressText">0 / 3 cooks</span>
+                        <span>Cooking progress</span>
+                        <span id="progressText">0 / 6</span>
                     </div>
 
                     <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
+                        <div
+                            class="progress-fill"
+                            id="progressFill"
+                        ></div>
                     </div>
 
                 </div>
 
-            </div>
 
+                <div class="badges">
 
-            <div class="badges">
+                    <div class="badge" id="badge1">
+                        <span>🍳</span>
+                        <small>First cook</small>
+                    </div>
 
-                <div class="badge">
-                    <span>🍲</span>
-                    <strong>Little Pot</strong>
-                    <small>Cook 3 recipes</small>
-                </div>
+                    <div class="badge" id="badge2">
+                        <span>🔥</span>
+                        <small>On a roll</small>
+                    </div>
 
-                <div class="badge">
-                    <span>🍗</span>
-                    <strong>Chicken Club</strong>
-                    <small>Cook 5 recipes</small>
-                </div>
+                    <div class="badge" id="badge3">
+                        <span>👨🏾‍🍳</span>
+                        <small>Chef mode</small>
+                    </div>
 
-                <div class="badge">
-                    <span>👨🏾‍🍳</span>
-                    <strong>Sahan Cook</strong>
-                    <small>Cook 8 recipes</small>
                 </div>
 
             </div>
@@ -276,66 +197,79 @@
 
 
     <!-- RECIPE MODAL -->
-    <div class="modal" id="recipeModal">
+    <div class="modal hidden" id="recipeModal">
 
-        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-overlay"></div>
 
         <div class="modal-content">
 
-            <button class="close-modal" id="closeModal">
+            <button class="close-btn" id="closeRecipeModal">
                 ×
             </button>
 
-            <div class="modal-header">
+            <div
+                class="modal-image"
+                id="modalImage"
+            ></div>
 
-                <span id="modalEmoji">🍗</span>
+            <div class="modal-body">
 
-                <div>
-                    <p class="eyebrow" id="modalCategory">
-                        CHICKEN
-                    </p>
+                <p class="eyebrow" id="modalCategory">
+                    RECIPE
+                </p>
 
-                    <h2 id="modalTitle">
-                        Chicken Suqaar
-                    </h2>
+                <h2 id="modalTitle">
+                    Recipe
+                </h2>
 
-                    <p id="modalDescription"></p>
+                <div class="modal-meta">
+
+                    <span id="modalTime">
+                        ⏱ 30 min
+                    </span>
+
+                    <span id="modalDifficulty">
+                        Easy
+                    </span>
+
                 </div>
 
-            </div>
 
+                <div class="ingredients">
 
-            <div class="modal-columns">
-
-                <div>
-
-                    <h3>You'll need</h3>
+                    <h3>Ingredients</h3>
 
                     <ul id="ingredientsList"></ul>
 
                 </div>
 
 
-                <div>
+                <div class="steps">
 
-                    <h3>Let's make it</h3>
+                    <h3>How to make it</h3>
 
                     <ol id="stepsList"></ol>
 
                 </div>
 
-            </div>
 
+                <div class="modal-actions">
 
-            <div class="modal-actions">
+                    <button
+                        class="secondary-btn"
+                        id="saveRecipeBtn"
+                    >
+                        ♥ Save
+                    </button>
 
-                <button class="save-action" id="saveRecipeBtn">
-                    ♡ Save recipe
-                </button>
+                    <button
+                        class="primary-btn"
+                        id="cookedBtn"
+                    >
+                        ✓ I cooked this
+                    </button>
 
-                <button class="cook-action" id="cookedBtn">
-                    ✓ I cooked this
-                </button>
+                </div>
 
             </div>
 
@@ -344,37 +278,50 @@
     </div>
 
 
-    <!-- RANDOM PICK RESULT -->
-    <div class="decision-modal" id="decisionModal">
+    <!-- RANDOM PICK MODAL -->
+    <div class="decision-modal hidden" id="decisionModal">
 
-        <div class="decision-box">
+        <div class="decision-overlay"></div>
 
-            <button class="close-modal" id="closeDecision">
+        <div class="decision-card">
+
+            <button
+                class="close-btn"
+                id="closeDecisionModal"
+            >
                 ×
             </button>
-
-            <p class="eyebrow">DINNER HAS BEEN DECIDED</p>
 
             <span class="decision-emoji" id="decisionEmoji">
                 🍗
             </span>
 
+            <p class="eyebrow">
+                SAHAN SAYS
+            </p>
+
             <h2 id="decisionTitle">
                 Chicken Suqaar
             </h2>
 
-            <p id="decisionText">
-                This is what you're making tonight, Chef.
+            <p id="decisionMeta">
+                30 min · Easy
             </p>
 
-            <div class="decision-buttons">
+            <div class="decision-actions">
 
-                <button class="decision-cook" id="decisionCook">
-                    Let's cook →
+                <button
+                    class="secondary-btn"
+                    id="tryAgainBtn"
+                >
+                    Again
                 </button>
 
-                <button class="decision-again" id="decisionAgain">
-                    Pick again
+                <button
+                    class="primary-btn"
+                    id="cookDecisionBtn"
+                >
+                    Let's cook
                 </button>
 
             </div>
@@ -385,7 +332,9 @@
 
 
     <!-- TOAST -->
-    <div class="toast" id="toast"></div>
+    <div class="toast" id="toast">
+        Saved!
+    </div>
 
 
     <script src="app.js"></script>

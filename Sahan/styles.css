@@ -16,7 +16,7 @@ body {
     font-family: "DM Sans", sans-serif;
     background: #211b17;
     color: #f5eadb;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 button,
@@ -25,12 +25,14 @@ input {
 }
 
 button {
+    border: none;
     cursor: pointer;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #df8a6d;
+    outline-offset: 3px;
 }
 
 
@@ -39,91 +41,99 @@ a {
 ========================= */
 
 :root {
-    --background: #211b17;
-    --background-soft: #29221d;
+    --bg: #211b17;
+    --bg-soft: #28211c;
+
     --card: #302822;
     --card-light: #382f28;
 
     --cream: #f5eadb;
     --cream-soft: #d8cbbd;
 
-    --brown: #211b17;
-    --text: #f5eadb;
-    --muted: #a99b8c;
-
     --terracotta: #c66d52;
     --terracotta-light: #df8a6d;
 
     --sage: #89947a;
-    --sage-dark: #596351;
 
     --yellow: #d7bd68;
 
     --line: #473c34;
+
+    --muted: #a99d91;
 }
 
 
 /* =========================
-   HEADER
+   NAVBAR
 ========================= */
 
-.site-header {
-    border-bottom: 1px solid var(--line);
-    background: #211b17;
-}
-
-.header-inner {
-    max-width: 1180px;
-    margin: auto;
+.navbar {
+    width: 100%;
     height: 76px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 24px;
+    padding: 0 6%;
+
+    border-bottom: 1px solid var(--line);
+
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    background: rgba(33, 27, 23, 0.96);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
     font-family: "Fraunces", serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -1px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .logo span {
     color: var(--terracotta-light);
 }
 
-nav {
+.navbar nav {
     display: flex;
-    gap: 32px;
-    color: var(--muted);
-    font-size: 14px;
+    gap: 8px;
 }
 
-nav a:hover {
+.nav-btn {
+    background: transparent;
+    color: var(--muted);
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    transition: 0.2s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
     color: var(--cream);
+    background: var(--card);
 }
 
 .saved-btn {
-    border: 1px solid var(--line);
-    background: transparent;
-    padding: 9px 15px;
-    border-radius: 30px;
+    background: var(--card);
     color: var(--cream);
+
+    padding: 9px 14px;
+
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    transition: 0.2s ease;
 }
 
 .saved-btn:hover {
     border-color: var(--terracotta);
-}
-
-.saved-btn span {
-    background: var(--terracotta);
-    color: white;
-    border-radius: 50%;
-    padding: 2px 7px;
-    margin-left: 5px;
 }
 
 
@@ -132,59 +142,70 @@ nav a:hover {
 ========================= */
 
 .hero {
-    max-width: 1180px;
-    margin: auto;
-    min-height: 500px;
-
-    padding: 90px 24px;
+    min-height: 390px;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 60px;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 70px 20px 55px;
 }
 
 .hero-content {
-    max-width: 720px;
+    max-width: 600px;
 }
 
 .eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
     color: var(--terracotta-light);
-    margin-bottom: 14px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
 }
 
 .hero h1 {
     font-family: "Fraunces", serif;
-    font-size: clamp(48px, 7vw, 82px);
-    line-height: 0.98;
-    letter-spacing: -3px;
-    max-width: 750px;
-}
 
-.hero h1 em,
-.kitchen-card h2 em {
-    color: var(--terracotta-light);
-    font-style: italic;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+
+    line-height: 0.95;
+
+    margin-bottom: 20px;
 }
 
 .hero-description {
-    max-width: 550px;
-    margin: 28px 0;
-    color: var(--muted);
-    font-size: 17px;
+    color: var(--cream-soft);
+
+    font-size: 1rem;
+
+    margin-bottom: 28px;
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
+
 .decision-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
     background: var(--terracotta);
-    color: white;
-    border: none;
-    padding: 16px 24px;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: 0.2s;
+    color: #fff;
+
+    padding: 13px 20px;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
 }
 
 .decision-btn:hover {
@@ -192,36 +213,8 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-.hero-note {
-    width: 190px;
-    min-width: 190px;
-
-    padding: 25px;
-
-    background: var(--yellow);
-    color: #30271d;
-
-    transform: rotate(3deg);
-
-    box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.2);
-}
-
-.hero-note span {
-    display: block;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
-}
-
-.hero-note strong {
-    font-family: "Fraunces", serif;
-    font-size: 23px;
-}
-
-.hero-note p {
-    font-size: 13px;
-    margin-top: 5px;
+.decision-btn span {
+    font-size: 1.1rem;
 }
 
 
@@ -230,22 +223,33 @@ nav a:hover {
 ========================= */
 
 .moods,
-.featured,
 .recipes-section,
 .kitchen-section {
-    max-width: 1180px;
-    margin: auto;
-    padding: 70px 24px;
+    width: min(1100px, 88%);
+
+    margin: 0 auto;
+
+    padding: 45px 0;
 }
 
 .section-heading {
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
 
 .section-heading h2 {
     font-family: "Fraunces", serif;
-    font-size: 38px;
+
+    font-size: 2rem;
+
     line-height: 1.1;
+}
+
+.recipe-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    gap: 20px;
 }
 
 
@@ -255,122 +259,51 @@ nav a:hover {
 
 .mood-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+
+    grid-template-columns: repeat(4, 1fr);
+
     gap: 12px;
 }
 
 .mood-card {
-    text-align: left;
-
     background: var(--card);
+
     color: var(--cream);
 
     border: 1px solid var(--line);
 
-    padding: 22px;
-    min-height: 150px;
+    border-radius: 12px;
 
-    transition: 0.2s;
-}
-
-.mood-card:hover {
-    border-color: var(--terracotta);
-    background: var(--card-light);
-    transform: translateY(-3px);
-}
-
-.mood-icon {
-    display: block;
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.mood-card strong {
-    display: block;
-    font-size: 14px;
-}
-
-.mood-card small {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-
-/* =========================
-   FEATURED
-========================= */
-
-.featured-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    background: #302822;
-    color: var(--cream);
-
-    border: 1px solid var(--line);
-}
-
-.featured-image {
-    min-height: 420px;
-
-    background: #5b3d32;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.featured-image span {
-    font-size: 120px;
-}
-
-.featured-content {
-    padding: 60px;
+    min-height: 105px;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+
+    gap: 8px;
+
+    transition: 0.2s ease;
 }
 
-.featured-content .eyebrow {
-    color: var(--yellow);
+.mood-card:hover {
+    background: var(--card-light);
+
+    border-color: var(--terracotta);
+
+    transform: translateY(-3px);
 }
 
-.featured-content h2 {
-    font-family: "Fraunces", serif;
-    font-size: 48px;
-    margin-bottom: 15px;
+.mood-card.active {
+    background: var(--terracotta);
+
+    border-color: var(--terracotta);
+
+    color: white;
 }
 
-.featured-content p {
-    color: var(--cream-soft);
-    max-width: 420px;
-}
-
-.recipe-meta {
-    display: flex;
-    gap: 15px;
-
-    margin: 25px 0;
-
-    font-size: 12px;
-    color: var(--cream-soft);
-}
-
-.outline-btn {
-    width: fit-content;
-
-    padding: 12px 18px;
-
-    border: 1px solid #75665a;
-    background: transparent;
-
-    color: var(--cream);
-}
-
-.outline-btn:hover {
-    background: var(--cream);
-    color: var(--brown);
+.mood-icon {
+    font-size: 1.7rem;
 }
 
 
@@ -378,70 +311,47 @@ nav a:hover {
    SEARCH
 ========================= */
 
-.recipe-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 30px;
-}
-
 .search-box {
-    display: flex;
-    align-items: center;
+    width: 220px;
 
-    border-bottom: 1px solid var(--muted);
-
-    padding: 5px 0;
+    position: relative;
 }
 
 .search-box input {
-    border: none;
-    outline: none;
+    width: 100%;
 
-    background: transparent;
+    background: var(--card);
+
     color: var(--cream);
-
-    padding: 8px;
-    width: 220px;
-}
-
-.search-box input::placeholder {
-    color: var(--muted);
-}
-
-.search-box span {
-    font-size: 24px;
-    color: var(--muted);
-}
-
-
-/* =========================
-   FILTERS
-========================= */
-
-.filters {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background: transparent;
 
     border: 1px solid var(--line);
 
-    padding: 8px 15px;
-    border-radius: 30px;
+    border-radius: 8px;
 
-    color: var(--muted);
+    padding: 10px 38px 10px 13px;
+
+    outline: none;
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-    background: var(--terracotta);
-    color: white;
+.search-box input::placeholder {
+    color: #8f8378;
+}
+
+.search-box input:focus {
     border-color: var(--terracotta);
+}
+
+.search-box span {
+    position: absolute;
+
+    right: 13px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--muted);
+
+    font-size: 1.2rem;
 }
 
 
@@ -451,8 +361,10 @@ nav a:hover {
 
 .recipe-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+
+    gap: 16px;
 }
 
 .recipe-card {
@@ -460,163 +372,199 @@ nav a:hover {
 
     border: 1px solid var(--line);
 
-    transition: 0.2s;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
 .recipe-card:hover {
     transform: translateY(-4px);
-    border-color: #65554a;
+
+    border-color: #665247;
 }
 
 .recipe-image {
-    height: 210px;
+    height: 175px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 75px;
+    font-size: 4.5rem;
 }
 
 .recipe-info {
-    padding: 22px;
+    padding: 17px;
 }
 
 .recipe-info h3 {
     font-family: "Fraunces", serif;
-    font-size: 25px;
-    color: var(--cream);
-}
 
-.recipe-info p {
-    color: var(--muted);
-    font-size: 13px;
-    margin: 8px 0 15px;
+    font-size: 1.35rem;
+
+    margin-bottom: 8px;
 }
 
 .card-meta {
     display: flex;
-    justify-content: space-between;
+    gap: 12px;
 
     color: var(--muted);
-    font-size: 11px;
-}
 
-.empty-message {
-    display: none;
-
-    text-align: center;
-    padding: 50px;
-
-    color: var(--muted);
+    font-size: 0.8rem;
 }
 
 
 /* =========================
-   MY KITCHEN
+   KITCHEN
 ========================= */
 
 .kitchen-section {
-    padding-bottom: 100px;
+    padding-top: 70px;
+    padding-bottom: 90px;
 }
 
 .kitchen-card {
-    background: #33392e;
-
-    padding: 50px;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-}
-
-.kitchen-card h2 {
-    font-family: "Fraunces", serif;
-
-    font-size: 42px;
-    line-height: 1.05;
-
-    margin-bottom: 15px;
-}
-
-.kitchen-card p {
-    color: #c6c9bd;
-    max-width: 430px;
-}
-
-.progress-area {
-    align-self: center;
-}
-
-.progress-label {
-    display: flex;
-    justify-content: space-between;
-
-    color: #e0e3d8;
-
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.progress-bar {
-    height: 10px;
-
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.progress-fill {
-    width: 0%;
-    height: 100%;
-
-    background: var(--yellow);
-
-    transition: 0.4s;
-}
-
-.badges {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.badge {
-    flex: 1;
-
     background: var(--card);
 
     border: 1px solid var(--line);
 
-    padding: 20px;
+    border-radius: 16px;
+
+    padding: 28px;
+}
+
+.kitchen-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+}
+
+.kitchen-top h2 {
+    font-family: "Fraunces", serif;
+
+    font-size: 1.8rem;
+}
+
+.points {
+    text-align: right;
+}
+
+.points strong {
+    display: block;
+
+    color: var(--yellow);
+
+    font-family: "Fraunces", serif;
+
+    font-size: 2rem;
+}
+
+.points span {
+    color: var(--muted);
+
+    font-size: 0.75rem;
+}
+
+.progress-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 8px;
+
+    background: #1d1815;
+
+    border-radius: 99px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background: var(--terracotta);
+
+    border-radius: inherit;
+
+    transition: width 0.4s ease;
+}
+
+.badges {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.badge {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: var(--bg-soft);
+
+    border: 1px solid var(--line);
+
+    border-radius: 8px;
+
+    padding: 8px 12px;
+
+    color: #665b52;
+
+    opacity: 0.5;
 }
 
 .badge span {
-    display: block;
-    font-size: 30px;
-    margin-bottom: 12px;
-}
-
-.badge strong {
-    display: block;
-    color: var(--cream);
+    font-size: 1.1rem;
 }
 
 .badge small {
-    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+.badge.unlocked {
+    color: var(--cream);
+
+    opacity: 1;
+
+    border-color: var(--sage);
 }
 
 
 /* =========================
-   MODALS
+   MODAL
 ========================= */
 
 .modal,
 .decision-modal {
     position: fixed;
-    inset: 0;
-    z-index: 1000;
 
-    display: none;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
 
     align-items: center;
     justify-content: center;
@@ -624,137 +572,164 @@ nav a:hover {
     padding: 20px;
 }
 
-.modal.show,
-.decision-modal.show {
-    display: flex;
+.hidden {
+    display: none !important;
 }
 
-.modal-overlay {
+.modal-overlay,
+.decision-overlay {
     position: absolute;
+
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.78);
+    background: rgba(0, 0, 0, 0.7);
 }
 
-.modal-content,
-.decision-box {
+.modal-content {
     position: relative;
 
-    background: #302822;
+    z-index: 2;
+
+    width: min(700px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: var(--card);
 
     border: 1px solid var(--line);
 
-    max-width: 850px;
-    width: 100%;
+    border-radius: 16px;
 
-    max-height: 90vh;
-    overflow-y: auto;
-
-    padding: 45px;
-
-    z-index: 2;
+    overflow-x: hidden;
 }
 
-.close-modal {
+.close-btn {
     position: absolute;
 
-    right: 20px;
     top: 15px;
+    right: 15px;
 
-    border: none;
-    background: none;
+    z-index: 5;
 
-    font-size: 30px;
+    width: 36px;
+    height: 36px;
 
-    color: var(--muted);
-}
+    border-radius: 50%;
 
-.close-modal:hover {
-    color: var(--cream);
-}
+    background: rgba(0, 0, 0, 0.35);
 
-.modal-header {
+    color: white;
+
+    font-size: 1.5rem;
+
     display: flex;
-    gap: 25px;
     align-items: center;
-
-    margin-bottom: 35px;
+    justify-content: center;
 }
 
-.modal-header > span {
-    font-size: 75px;
+.close-btn:hover {
+    background: var(--terracotta);
 }
 
-.modal-header h2 {
+.modal-image {
+    height: 230px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 6rem;
+}
+
+.modal-body {
+    padding: 28px;
+}
+
+.modal-body h2 {
     font-family: "Fraunces", serif;
 
-    font-size: 42px;
+    font-size: 2.2rem;
 
-    color: var(--cream);
+    margin-bottom: 8px;
 }
 
-.modal-header p {
+.modal-meta {
+    display: flex;
+
+    gap: 15px;
+
     color: var(--muted);
+
+    font-size: 0.85rem;
+
+    margin-bottom: 25px;
 }
 
-.modal-columns {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-
-    gap: 50px;
+.ingredients,
+.steps {
+    margin-top: 22px;
 }
 
-.modal-columns h3 {
+.ingredients h3,
+.steps h3 {
     font-family: "Fraunces", serif;
 
-    color: var(--cream);
-
-    font-size: 22px;
-
-    margin-bottom: 15px;
-}
-
-.modal-columns ul,
-.modal-columns ol {
-    padding-left: 20px;
-}
-
-.modal-columns li {
     margin-bottom: 10px;
+}
+
+.ingredients ul,
+.steps ol {
+    padding-left: 20px;
 
     color: var(--cream-soft);
 }
 
+.ingredients li,
+.steps li {
+    margin-bottom: 7px;
+}
+
 .modal-actions {
     display: flex;
+
     gap: 10px;
 
-    margin-top: 35px;
+    margin-top: 28px;
 }
 
-.save-action,
-.cook-action {
-    padding: 13px 18px;
+.primary-btn,
+.secondary-btn {
+    flex: 1;
 
-    border: none;
+    padding: 12px 16px;
+
+    border-radius: 8px;
+
+    font-weight: 700;
 }
 
-.save-action {
-    background: #453a32;
-    color: var(--cream);
-}
-
-.save-action:hover {
-    background: #51453b;
-}
-
-.cook-action {
+.primary-btn {
     background: var(--terracotta);
+
     color: white;
 }
 
-.cook-action:hover {
+.primary-btn:hover {
     background: var(--terracotta-light);
+}
+
+.secondary-btn {
+    background: transparent;
+
+    color: var(--cream);
+
+    border: 1px solid var(--line);
+}
+
+.secondary-btn:hover {
+    background: var(--card-light);
 }
 
 
@@ -762,75 +737,50 @@ nav a:hover {
    DECISION MODAL
 ========================= */
 
-.decision-box {
-    max-width: 520px;
+.decision-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(430px, 100%);
 
     text-align: center;
 
-    padding: 55px 40px;
-}
+    background: var(--card);
 
-.decision-box .eyebrow {
-    color: var(--yellow);
+    border: 1px solid var(--line);
+
+    border-radius: 18px;
+
+    padding: 45px 30px 30px;
 }
 
 .decision-emoji {
     display: block;
 
-    font-size: 90px;
+    font-size: 5rem;
 
-    margin: 15px 0;
+    margin-bottom: 20px;
 }
 
-.decision-box h2 {
+.decision-card h2 {
     font-family: "Fraunces", serif;
 
-    font-size: 45px;
+    font-size: 2.4rem;
 
-    color: var(--cream);
+    margin-bottom: 5px;
 }
 
-.decision-box p {
+.decision-card > p:last-of-type {
     color: var(--muted);
+
+    margin-bottom: 28px;
 }
 
-.decision-buttons {
+.decision-actions {
     display: flex;
 
-    justify-content: center;
-
     gap: 10px;
-
-    margin-top: 25px;
-}
-
-.decision-cook,
-.decision-again {
-    padding: 12px 18px;
-}
-
-.decision-cook {
-    background: var(--terracotta);
-
-    color: white;
-
-    border: none;
-}
-
-.decision-cook:hover {
-    background: var(--terracotta-light);
-}
-
-.decision-again {
-    background: transparent;
-
-    border: 1px solid var(--line);
-
-    color: var(--cream);
-}
-
-.decision-again:hover {
-    background: var(--card-light);
 }
 
 
@@ -841,120 +791,151 @@ nav a:hover {
 .toast {
     position: fixed;
 
-    bottom: 25px;
     left: 50%;
+    bottom: 25px;
 
     transform: translate(-50%, 100px);
 
     background: var(--cream);
-    color: var(--brown);
 
-    padding: 13px 20px;
+    color: var(--bg);
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    z-index: 200;
 
     opacity: 0;
 
-    transition: 0.3s;
-
-    z-index: 2000;
+    transition: 0.3s ease;
 }
 
 .toast.show {
     transform: translate(-50%, 0);
+
     opacity: 1;
 }
 
 
 /* =========================
-   MOBILE
+   EMPTY STATE
+========================= */
+
+.empty-state {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    color: var(--muted);
+}
+
+.empty-state span {
+    display: block;
+
+    font-size: 3rem;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   RESPONSIVE
 ========================= */
 
 @media (max-width: 800px) {
 
-    nav {
-        display: none;
+    .navbar {
+        padding: 0 4%;
     }
 
-    .hero {
-        padding: 65px 24px;
-        display: block;
-    }
-
-    .hero-note {
-        margin-top: 45px;
+    .moods,
+    .recipes-section,
+    .kitchen-section {
+        width: 92%;
     }
 
     .mood-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .featured-card {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-image {
-        min-height: 250px;
-    }
-
-    .featured-content {
-        padding: 35px;
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .recipe-heading {
-        display: block;
+        align-items: flex-start;
+
+        flex-direction: column;
     }
 
     .search-box {
-        margin-top: 20px;
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .navbar {
+        height: 65px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 330px;
+
+        padding-top: 50px;
+    }
+
+    .hero h1 {
+        font-size: 3.3rem;
+    }
+
+    .moods,
+    .recipes-section,
+    .kitchen-section {
+        padding: 35px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 1.7rem;
     }
 
     .recipe-grid {
         grid-template-columns: 1fr;
     }
 
-    .kitchen-card {
-        grid-template-columns: 1fr;
-
-        padding: 35px;
+    .recipe-image {
+        height: 190px;
     }
 
-    .badges {
-        flex-direction: column;
-    }
-
-    .modal-content {
-        padding: 30px 25px;
-    }
-
-    .modal-columns {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media (max-width: 500px) {
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .mood-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-content h2 {
-        font-size: 38px;
-    }
-
-    .modal-header {
+    .kitchen-top {
         align-items: flex-start;
     }
 
-    .modal-header > span {
-        font-size: 50px;
+    .badges {
+        flex-wrap: wrap;
     }
 
-    .modal-header h2 {
-        font-size: 32px;
+    .modal-actions,
+    .decision-actions {
+        flex-direction: column;
     }
 
+    .modal-body {
+        padding: 22px;
+    }
+
+    .decision-card h2 {
+        font-size: 2rem;
+    }
 }
