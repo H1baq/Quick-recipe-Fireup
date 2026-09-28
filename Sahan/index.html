@@ -1,429 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sahan — Somali Recipes, Made Easy</title>
+    <title>Sahan — Chef Nasser's Kitchen</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <a href="#" class="logo">
-      <span class="logo-symbol">✦</span>
-      <span>SAHAN</span>
-    </a>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
 
-    <nav>
-      <a href="#recipes">Recipes</a>
-      <a href="#journey">My Kitchen</a>
+            <a href="#" class="logo">
+                SAHAN<span>.</span>
+            </a>
 
-      <button class="saved-button" id="savedButton">
-        ♡ Saved <span id="savedCount">0</span>
-      </button>
-    </nav>
-  </header>
+            <nav>
+                <a href="#recipes">Recipes</a>
+                <a href="#kitchen">My Kitchen</a>
+            </nav>
 
+            <button class="saved-btn" id="savedBtn">
+                Saved <span id="savedCount">0</span>
+            </button>
 
-  <main>
+        </div>
+    </header>
+
 
     <!-- HERO -->
-    <section class="hero">
+    <main>
 
-      <div class="hero-text">
+        <section class="hero">
 
-        <p class="eyebrow">
-          SOMALI-INSPIRED • EVERYDAY COOKING
-        </p>
+            <div class="hero-content">
 
-        <h1>
-          Good food
-          <em>doesn't have to be</em>
-          complicated.
-        </h1>
+                <p class="eyebrow">WELCOME BACK, CHEF NASSER ✦</p>
 
-        <p class="intro">
-          Easy recipes for busy days, cozy nights,
-          and anyone who loves a good plate of food.
-        </p>
+                <h1>
+                    Hungry but don't want
+                    <em>to think?</em>
+                </h1>
 
-        <div class="search-box">
-          <span>⌕</span>
+                <p class="hero-description">
+                    We've got dinner handled. Tell us what kind of mood
+                    you're in — or let Sahan decide for you.
+                </p>
 
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search chicken, bariis, suugo..."
-          >
+                <button class="decision-btn" id="surpriseBtn">
+                    ✦ Pick something for me
+                </button>
+
+            </div>
+
+            <div class="hero-note">
+                <span>Today's rule</span>
+                <strong>No overthinking.</strong>
+                <p>Just good food.</p>
+            </div>
+
+        </section>
+
+
+        <!-- QUICK MOODS -->
+        <section class="moods">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">WHAT'S THE VIBE?</p>
+                    <h2>So, Chef Nasser...</h2>
+                </div>
+            </div>
+
+            <div class="mood-grid">
+
+                <button class="mood-card" data-filter="quick">
+                    <span class="mood-icon">⚡</span>
+                    <strong>I'm in a hurry</strong>
+                    <small>Something quick</small>
+                </button>
+
+                <button class="mood-card" data-filter="one-pot">
+                    <span class="mood-icon">🥘</span>
+                    <strong>One pot please</strong>
+                    <small>Less washing up</small>
+                </button>
+
+                <button class="mood-card" data-filter="chicken">
+                    <span class="mood-icon">🍗</span>
+                    <strong>Give me chicken</strong>
+                    <small>You know the craving</small>
+                </button>
+
+                <button class="mood-card" data-filter="meat-free">
+                    <span class="mood-icon">🌿</span>
+                    <strong>No meat today</strong>
+                    <small>Keep it plant-friendly</small>
+                </button>
+
+                <button class="mood-card surprise-small" id="surpriseMood">
+                    <span class="mood-icon">😌</span>
+                    <strong>Surprise me</strong>
+                    <small>I trust you</small>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURED -->
+        <section class="featured">
+
+            <div class="featured-card">
+
+                <div class="featured-image">
+                    <span>🍗</span>
+                </div>
+
+                <div class="featured-content">
+
+                    <p class="eyebrow">TONIGHT'S EASY PICK</p>
+
+                    <h2>Chicken Suqaar</h2>
+
+                    <p>
+                        Tender chicken, colourful vegetables and warm spices.
+                        Simple enough for a hungry Chef Nasser.
+                    </p>
+
+                    <div class="recipe-meta">
+                        <span>⏱ 30 min</span>
+                        <span>🍳 Easy</span>
+                        <span>🍗 Chicken</span>
+                    </div>
+
+                    <button class="outline-btn" data-recipe="chicken-suqaar">
+                        Let's cook this →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECIPES -->
+        <section class="recipes-section" id="recipes">
+
+            <div class="section-heading recipe-heading">
+
+                <div>
+                    <p class="eyebrow">WHEN YOU ACTUALLY WANT TO CHOOSE</p>
+                    <h2>Things Nasser might actually eat.</h2>
+                </div>
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search recipes..."
+                    >
+                    <span>⌕</span>
+                </div>
+
+            </div>
+
+
+            <!-- FILTERS -->
+            <div class="filters">
+
+                <button class="filter-btn active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-btn" data-filter="chicken">
+                    Chicken
+                </button>
+
+                <button class="filter-btn" data-filter="one-pot">
+                    One pot
+                </button>
+
+                <button class="filter-btn" data-filter="meat-free">
+                    Meat-free
+                </button>
+
+                <button class="filter-btn" data-filter="quick">
+                    Quick
+                </button>
+
+            </div>
+
+
+            <div class="recipe-grid" id="recipeGrid"></div>
+
+            <p class="empty-message" id="emptyMessage">
+                Hmm. Even the kitchen is confused.
+                Try another search.
+            </p>
+
+        </section>
+
+
+        <!-- MY KITCHEN -->
+        <section class="kitchen-section" id="kitchen">
+
+            <div class="kitchen-card">
+
+                <div>
+                    <p class="eyebrow">NASSER'S KITCHEN</p>
+
+                    <h2>
+                        You're doing alright,
+                        <em>Chef.</em>
+                    </h2>
+
+                    <p>
+                        Cook recipes to collect points and unlock
+                        little kitchen badges.
+                    </p>
+                </div>
+
+                <div class="progress-area">
+
+                    <div class="progress-label">
+                        <span id="pointsText">0 points</span>
+                        <span id="progressText">0 / 3 cooks</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="badges">
+
+                <div class="badge">
+                    <span>🍲</span>
+                    <strong>Little Pot</strong>
+                    <small>Cook 3 recipes</small>
+                </div>
+
+                <div class="badge">
+                    <span>🍗</span>
+                    <strong>Chicken Club</strong>
+                    <small>Cook 5 recipes</small>
+                </div>
+
+                <div class="badge">
+                    <span>👨🏾‍🍳</span>
+                    <strong>Sahan Cook</strong>
+                    <small>Cook 8 recipes</small>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RECIPE MODAL -->
+    <div class="modal" id="recipeModal">
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="modal-content">
+
+            <button class="close-modal" id="closeModal">
+                ×
+            </button>
+
+            <div class="modal-header">
+
+                <span id="modalEmoji">🍗</span>
+
+                <div>
+                    <p class="eyebrow" id="modalCategory">
+                        CHICKEN
+                    </p>
+
+                    <h2 id="modalTitle">
+                        Chicken Suqaar
+                    </h2>
+
+                    <p id="modalDescription"></p>
+                </div>
+
+            </div>
+
+
+            <div class="modal-columns">
+
+                <div>
+
+                    <h3>You'll need</h3>
+
+                    <ul id="ingredientsList"></ul>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Let's make it</h3>
+
+                    <ol id="stepsList"></ol>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button class="save-action" id="saveRecipeBtn">
+                    ♡ Save recipe
+                </button>
+
+                <button class="cook-action" id="cookedBtn">
+                    ✓ I cooked this
+                </button>
+
+            </div>
+
         </div>
 
-      </div>
+    </div>
 
 
-      <!-- FEATURED RECIPE -->
-      <div class="featured-card">
+    <!-- RANDOM PICK RESULT -->
+    <div class="decision-modal" id="decisionModal">
 
-        <div class="featured-image">
-          <span class="steam steam-one">〰</span>
-          <span class="steam steam-two">〰</span>
+        <div class="decision-box">
 
-          <div class="plate">
-            🍗
-          </div>
-        </div>
+            <button class="close-modal" id="closeDecision">
+                ×
+            </button>
 
-        <div class="featured-content">
+            <p class="eyebrow">DINNER HAS BEEN DECIDED</p>
 
-          <span class="small-label">
-            TODAY'S EASY DISH
-          </span>
-
-          <h2>Chicken Suqaar</h2>
-
-          <p>
-            Tender chicken, peppers and onions
-            with warm Somali spices.
-          </p>
-
-          <div class="recipe-info">
-            <span>⏱ 35 min</span>
-            <span>•</span>
-            <span>Easy</span>
-          </div>
-
-          <button
-            class="primary-button"
-            data-open-recipe="chicken-suqaar"
-          >
-            Cook this
-            <span>→</span>
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- RECIPES -->
-    <section class="recipes-section" id="recipes">
-
-      <div class="section-heading">
-
-        <div>
-          <p class="eyebrow">FIND YOUR PLATE</p>
-
-          <h2>
-            What are we cooking?
-          </h2>
-        </div>
-
-      </div>
-
-
-      <!-- FILTERS -->
-      <div class="filters">
-
-        <button
-          class="filter active"
-          data-category="all"
-        >
-          All recipes
-        </button>
-
-        <button
-          class="filter"
-          data-category="chicken"
-        >
-          🍗 Chicken
-        </button>
-
-        <button
-          class="filter"
-          data-category="one-pot"
-        >
-          🥘 One pot
-        </button>
-
-        <button
-          class="filter"
-          data-category="meat-free"
-        >
-          🌿 Meat-free
-        </button>
-
-        <button
-          class="filter"
-          data-category="quick"
-        >
-          ⚡ Quick
-        </button>
-
-      </div>
-
-
-      <!-- RECIPE CARDS -->
-      <div
-        class="recipe-grid"
-        id="recipeGrid"
-      ></div>
-
-      <p
-        class="empty-message"
-        id="emptyMessage"
-      >
-        No recipes found. Try another search.
-      </p>
-
-    </section>
-
-
-    <!-- GAMIFICATION -->
-    <section
-      class="journey-section"
-      id="journey"
-    >
-
-      <div class="journey-content">
-
-        <p class="eyebrow">
-          YOUR KITCHEN JOURNEY
-        </p>
-
-        <h2>
-          A little cooking
-          <br>
-          streak never hurt.
-        </h2>
-
-        <p>
-          Cook recipes, collect points and unlock
-          little kitchen badges along the way.
-        </p>
-
-
-        <div class="progress-container">
-
-          <div class="progress-label">
-
-            <span id="progressText">
-              0 / 3 recipes cooked
+            <span class="decision-emoji" id="decisionEmoji">
+                🍗
             </span>
 
-            <span id="pointsText">
-              0 pts
-            </span>
+            <h2 id="decisionTitle">
+                Chicken Suqaar
+            </h2>
 
-          </div>
+            <p id="decisionText">
+                This is what you're making tonight, Chef.
+            </p>
 
-          <div class="progress-bar">
-            <span id="progressBar"></span>
-          </div>
+            <div class="decision-buttons">
 
-        </div>
+                <button class="decision-cook" id="decisionCook">
+                    Let's cook →
+                </button>
 
-      </div>
+                <button class="decision-again" id="decisionAgain">
+                    Pick again
+                </button>
 
-
-      <!-- BADGES -->
-      <div class="badges">
-
-        <div
-          class="badge"
-          data-required="3"
-        >
-
-          <div class="badge-icon">
-            🥘
-          </div>
-
-          <strong>
-            Little Pot
-          </strong>
-
-          <span>
-            Cook 3 recipes
-          </span>
-
-          <small>
-            LOCKED
-          </small>
+            </div>
 
         </div>
 
-
-        <div
-          class="badge"
-          data-required="5"
-        >
-
-          <div class="badge-icon">
-            🍗
-          </div>
-
-          <strong>
-            Chicken Club
-          </strong>
-
-          <span>
-            Cook 5 recipes
-          </span>
-
-          <small>
-            LOCKED
-          </small>
-
-        </div>
+    </div>
 
 
-        <div
-          class="badge"
-          data-required="8"
-        >
-
-          <div class="badge-icon">
-            ✦
-          </div>
-
-          <strong>
-            Sahan Cook
-          </strong>
-
-          <span>
-            Cook 8 recipes
-          </span>
-
-          <small>
-            LOCKED
-          </small>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
 
 
-  <!-- RECIPE MODAL -->
-  <div
-    class="modal hidden"
-    id="recipeModal"
-  >
-
-    <div
-      class="modal-background"
-      data-close
-    ></div>
-
-
-    <article class="recipe-modal">
-
-      <button
-        class="close-button"
-        data-close
-      >
-        ×
-      </button>
-
-
-      <div
-        class="modal-image"
-        id="modalImage"
-      >
-        🍗
-      </div>
-
-
-      <div class="modal-content">
-
-        <p
-          class="eyebrow"
-          id="modalCategory"
-        >
-          CHICKEN
-        </p>
-
-        <h2 id="modalTitle">
-          Chicken Suqaar
-        </h2>
-
-        <p id="modalDescription"></p>
-
-
-        <div
-          class="modal-info"
-          id="modalInfo"
-        ></div>
-
-
-        <div class="modal-buttons">
-
-          <button
-            class="secondary-button"
-            id="saveRecipeButton"
-          >
-            ♡ Save
-          </button>
-
-          <button
-            class="primary-button"
-            id="cookedButton"
-          >
-            ✓ I cooked this
-          </button>
-
-        </div>
-
-
-        <hr>
-
-
-        <h3>
-          You'll need
-        </h3>
-
-        <ul
-          class="ingredients"
-          id="ingredients"
-        ></ul>
-
-
-        <h3>
-          Let's cook
-        </h3>
-
-        <ol
-          class="steps"
-          id="steps"
-        ></ol>
-
-      </div>
-
-    </article>
-
-  </div>
-
-
-  <!-- TOAST -->
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>

@@ -1,994 +1,720 @@
-/* ==========================================
-   SAHAN RECIPE DATA
-========================================== */
+/* =========================
+   RECIPES
+========================= */
 
 const recipes = [
 
-  {
-    id: "chicken-suqaar",
-
-    title: "Chicken Suqaar",
-
-    categories: ["chicken", "one-pot"],
-
-    tag: "Chicken",
-
-    description:
-      "Tender chicken, peppers and onions with warm Somali spices.",
-
-    time: 35,
-
-    difficulty: "Easy",
-
-    emoji: "🍗",
-
-    background: "#e8d5bd",
-
-    ingredients: [
-      "500g chicken breast, cubed",
-      "1 onion, sliced",
-      "1 bell pepper",
-      "2 tomatoes, diced",
-      "2 garlic cloves",
-      "1 tbsp xawaash",
-      "2 tbsp cooking oil",
-      "Salt to taste"
-    ],
-
-    steps: [
-      "Heat oil in a wide pan and soften the onion.",
-      "Add garlic, chicken and xawaash. Cook until the chicken starts to brown.",
-      "Add tomatoes and bell pepper. Stir and cover.",
-      "Cook for 10–12 minutes until tender.",
-      "Taste for salt and serve with rice, canjeero or bread."
-    ]
-  },
-
-
-  {
-    id: "one-pot-bariis",
-
-    title: "One-Pot Chicken Bariis",
-
-    categories: ["chicken", "one-pot"],
-
-    tag: "One pot",
-
-    description:
-      "Fragrant spiced rice and chicken made in one pot.",
-
-    time: 45,
-
-    difficulty: "Easy",
-
-    emoji: "🍚",
-
-    background: "#e5d9b9",
-
-    ingredients: [
-      "2 cups basmati rice",
-      "500g chicken pieces",
-      "1 onion",
-      "2 carrots",
-      "2 tbsp tomato paste",
-      "2 tsp xawaash",
-      "3 cups stock",
-      "Salt"
-    ],
-
-    steps: [
-      "Brown the chicken and onion in a large pot.",
-      "Add tomato paste, carrots and spices.",
-      "Stir in washed rice and stock.",
-      "Bring to a simmer, cover and cook until rice is tender.",
-      "Rest for 10 minutes before fluffing and serving."
-    ]
-  },
-
-
-  {
-    id: "chicken-suugo",
-
-    title: "Chicken Suugo",
-
-    categories: ["chicken", "quick"],
-
-    tag: "Chicken",
-
-    description:
-      "A cozy tomato chicken sauce for pasta, rice or bread.",
-
-    time: 30,
-
-    difficulty: "Easy",
-
-    emoji: "🍝",
-
-    background: "#e3c2ae",
-
-    ingredients: [
-      "400g chicken",
-      "1 onion",
-      "3 tomatoes",
-      "2 tbsp tomato paste",
-      "2 garlic cloves",
-      "1 tsp cumin",
-      "1 tsp xawaash",
-      "Oil and salt"
-    ],
-
-    steps: [
-      "Cook onion and garlic until soft.",
-      "Add chicken and brown lightly.",
-      "Stir in tomatoes, tomato paste and spices.",
-      "Cover and simmer for 15 minutes.",
-      "Serve over pasta or rice."
-    ]
-  },
-
-
-  {
-    id: "lentil-suugo",
-
-    title: "Lentil Suugo",
-
-    categories: ["meat-free", "one-pot"],
-
-    tag: "Meat-free",
-
-    description:
-      "Comforting lentils in a rich tomato and spice sauce.",
-
-    time: 35,
-
-    difficulty: "Easy",
-
-    emoji: "🥣",
-
-    background: "#cbd0b7",
-
-    ingredients: [
-      "1 cup red lentils",
-      "1 onion",
-      "3 tomatoes",
-      "2 garlic cloves",
-      "1 tsp cumin",
-      "1 tsp xawaash",
-      "3 cups water",
-      "Salt"
-    ],
-
-    steps: [
-      "Sauté onion and garlic until soft.",
-      "Add tomatoes and spices.",
-      "Add washed lentils and water.",
-      "Simmer for 20 minutes until creamy.",
-      "Serve with bread, rice or canjeero."
-    ]
-  },
-
-
-  {
-    id: "potato-stew",
-
-    title: "Potato & Carrot Stew",
-
-    categories: ["meat-free", "one-pot"],
-
-    tag: "Meat-free",
-
-    description:
-      "Soft potatoes and sweet carrots in a simple spiced tomato broth.",
-
-    time: 40,
-
-    difficulty: "Easy",
-
-    emoji: "🥔",
-
-    background: "#d9c7a6",
-
-    ingredients: [
-      "4 potatoes",
-      "3 carrots",
-      "1 onion",
-      "3 tomatoes",
-      "2 garlic cloves",
-      "1 tsp cumin",
-      "2 cups water",
-      "Salt"
-    ],
-
-    steps: [
-      "Sauté onion and garlic.",
-      "Add tomatoes and spices and cook down.",
-      "Add potatoes, carrots and water.",
-      "Cover and simmer until vegetables are tender.",
-      "Taste and serve warm."
-    ]
-  },
-
-
-  {
-    id: "spiced-chicken",
-
-    title: "Quick Spiced Chicken",
-
-    categories: ["chicken", "quick"],
-
-    tag: "Quick",
-
-    description:
-      "Golden pan chicken for when you need dinner without the fuss.",
-
-    time: 25,
-
-    difficulty: "Easy",
-
-    emoji: "🍗",
-
-    background: "#d9b69d",
-
-    ingredients: [
-      "500g chicken strips",
-      "1 tbsp xawaash",
-      "1 tsp paprika",
-      "2 garlic cloves",
-      "1 lemon",
-      "2 tbsp oil",
-      "Salt"
-    ],
-
-    steps: [
-      "Toss chicken with spices, garlic, lemon and salt.",
-      "Heat oil in a pan.",
-      "Cook chicken over medium-high heat until golden and cooked through.",
-      "Rest for 2 minutes.",
-      "Serve with a simple salad, rice or flatbread."
-    ]
-  }
+    {
+        id: "chicken-suqaar",
+        title: "Chicken Suqaar",
+        category: "chicken",
+        categories: ["chicken", "quick"],
+        emoji: "🍗",
+        time: 30,
+        difficulty: "Easy",
+        description:
+            "Tender chicken with colourful vegetables and warm Somali spices.",
+        ingredients: [
+            "500g chicken breast, cubed",
+            "1 onion, sliced",
+            "1 tomato, diced",
+            "1 green pepper, chopped",
+            "2 cloves garlic",
+            "1 tsp cumin",
+            "1 tsp paprika",
+            "Salt and black pepper",
+            "2 tbsp cooking oil"
+        ],
+        steps: [
+            "Heat oil in a large pan.",
+            "Add onion and garlic and cook until soft.",
+            "Add the chicken and season with cumin, paprika, salt and pepper.",
+            "Cook until the chicken is browned and cooked through.",
+            "Add tomato and green pepper.",
+            "Cook for another 5–7 minutes.",
+            "Serve with rice, pasta or flatbread."
+        ]
+    },
+
+    {
+        id: "one-pot-bariis",
+        title: "Easy One-Pot Bariis",
+        category: "one-pot",
+        categories: ["one-pot"],
+        emoji: "🍚",
+        time: 40,
+        difficulty: "Easy",
+        description:
+            "A comforting spiced rice dish without the pile of dishes.",
+        ingredients: [
+            "2 cups basmati rice",
+            "1 onion",
+            "2 tomatoes",
+            "1 carrot",
+            "2 cloves garlic",
+            "1 tsp cumin",
+            "1 tsp cardamom",
+            "3 cups stock",
+            "Salt and pepper"
+        ],
+        steps: [
+            "Wash the rice and set aside.",
+            "Cook onion, garlic and tomatoes in a large pot.",
+            "Add the spices and stir.",
+            "Add rice and mix well.",
+            "Pour in the stock.",
+            "Cover and cook until the rice is tender.",
+            "Rest for 5 minutes before serving."
+        ]
+    },
+
+    {
+        id: "chicken-suugo",
+        title: "Chicken Suugo",
+        category: "chicken",
+        categories: ["chicken"],
+        emoji: "🍝",
+        time: 35,
+        difficulty: "Easy",
+        description:
+            "A simple tomato-based chicken pasta for a proper comfort-food evening.",
+        ingredients: [
+            "300g pasta",
+            "300g chicken",
+            "1 onion",
+            "2 tomatoes",
+            "2 cloves garlic",
+            "1 tbsp tomato paste",
+            "1 tsp paprika",
+            "Salt and pepper"
+        ],
+        steps: [
+            "Cook pasta according to the packet instructions.",
+            "Cook onion and garlic in a pan.",
+            "Add chicken and season.",
+            "Add tomatoes and tomato paste.",
+            "Simmer until the sauce thickens.",
+            "Mix with the cooked pasta.",
+            "Serve hot."
+        ]
+    },
+
+    {
+        id: "lentil-suugo",
+        title: "Lentil Suugo",
+        category: "meat-free",
+        categories: ["meat-free", "quick"],
+        emoji: "🥣",
+        time: 25,
+        difficulty: "Easy",
+        description:
+            "A warm, filling lentil stew when you want something simple without meat.",
+        ingredients: [
+            "2 cups cooked lentils",
+            "1 onion",
+            "2 tomatoes",
+            "2 cloves garlic",
+            "1 tsp cumin",
+            "1 tsp paprika",
+            "Salt and pepper",
+            "1 tbsp cooking oil"
+        ],
+        steps: [
+            "Cook onion and garlic until soft.",
+            "Add tomatoes and spices.",
+            "Cook until the tomatoes break down.",
+            "Add the lentils.",
+            "Add a little water if needed.",
+            "Simmer for 10 minutes.",
+            "Serve with rice or bread."
+        ]
+    },
+
+    {
+        id: "potato-stew",
+        title: "Simple Potato Stew",
+        category: "one-pot",
+        categories: ["one-pot", "meat-free"],
+        emoji: "🥔",
+        time: 35,
+        difficulty: "Easy",
+        description:
+            "A cosy potato stew made in one pot with very little effort.",
+        ingredients: [
+            "5 potatoes",
+            "1 onion",
+            "2 tomatoes",
+            "1 carrot",
+            "2 cloves garlic",
+            "1 tsp cumin",
+            "2 cups vegetable stock",
+            "Salt and pepper"
+        ],
+        steps: [
+            "Chop potatoes and vegetables.",
+            "Cook onion and garlic in a pot.",
+            "Add tomatoes and spices.",
+            "Add potatoes and carrots.",
+            "Pour in vegetable stock.",
+            "Cover and simmer until the potatoes are tender.",
+            "Taste and adjust seasoning."
+        ]
+    },
+
+    {
+        id: "spiced-chicken",
+        title: "Quick Spiced Chicken",
+        category: "chicken",
+        categories: ["chicken", "quick"],
+        emoji: "🍗",
+        time: 20,
+        difficulty: "Very easy",
+        description:
+            "Twenty-minute chicken for those evenings when hunger has no patience.",
+        ingredients: [
+            "500g chicken",
+            "1 onion",
+            "2 cloves garlic",
+            "1 tsp paprika",
+            "1 tsp cumin",
+            "½ tsp turmeric",
+            "Salt and pepper",
+            "2 tbsp cooking oil"
+        ],
+        steps: [
+            "Cut chicken into small pieces.",
+            "Heat oil in a pan.",
+            "Add onion and garlic.",
+            "Add chicken and spices.",
+            "Cook until completely cooked through.",
+            "Serve with bread, rice or vegetables."
+        ]
+    }
 
 ];
 
 
-/* ==========================================
-   APP STATE
-========================================== */
-
-let activeCategory = "all";
-
-let searchTerm = "";
+/* =========================
+   STATE
+========================= */
 
 let savedRecipes =
-  JSON.parse(
-    localStorage.getItem("sahanSaved") || "[]"
-  );
+    JSON.parse(localStorage.getItem("sahanSaved")) || [];
 
 let cookedRecipes =
-  JSON.parse(
-    localStorage.getItem("sahanCooked") || "[]"
-  );
+    JSON.parse(localStorage.getItem("sahanCooked")) || [];
 
 let currentRecipe = null;
 
 
-/* ==========================================
+/* =========================
    ELEMENTS
-========================================== */
+========================= */
 
-const recipeGrid =
-  document.getElementById("recipeGrid");
+const recipeGrid = document.getElementById("recipeGrid");
+const searchInput = document.getElementById("searchInput");
+const emptyMessage = document.getElementById("emptyMessage");
 
-const emptyMessage =
-  document.getElementById("emptyMessage");
+const savedCount = document.getElementById("savedCount");
 
-const searchInput =
-  document.getElementById("searchInput");
+const recipeModal = document.getElementById("recipeModal");
+const modalOverlay = document.getElementById("modalOverlay");
+const closeModal = document.getElementById("closeModal");
 
-const modal =
-  document.getElementById("recipeModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalEmoji = document.getElementById("modalEmoji");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
 
-const toast =
-  document.getElementById("toast");
+const ingredientsList = document.getElementById("ingredientsList");
+const stepsList = document.getElementById("stepsList");
+
+const saveRecipeBtn = document.getElementById("saveRecipeBtn");
+const cookedBtn = document.getElementById("cookedBtn");
+
+const surpriseBtn = document.getElementById("surpriseBtn");
+const surpriseMood = document.getElementById("surpriseMood");
+
+const decisionModal = document.getElementById("decisionModal");
+const closeDecision = document.getElementById("closeDecision");
+
+const decisionEmoji = document.getElementById("decisionEmoji");
+const decisionTitle = document.getElementById("decisionTitle");
+const decisionText = document.getElementById("decisionText");
+
+const decisionCook = document.getElementById("decisionCook");
+const decisionAgain = document.getElementById("decisionAgain");
+
+const toast = document.getElementById("toast");
+
+const pointsText = document.getElementById("pointsText");
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
 
 
-/* ==========================================
+/* =========================
    DISPLAY RECIPES
-========================================== */
+========================= */
 
-function renderRecipes() {
+function displayRecipes(list = recipes) {
 
-  const filteredRecipes =
-    recipes.filter(recipe => {
+    recipeGrid.innerHTML = "";
 
-      const categoryMatch =
-        activeCategory === "all" ||
-        recipe.categories.includes(activeCategory);
+    if (list.length === 0) {
+        emptyMessage.style.display = "block";
+        return;
+    }
+
+    emptyMessage.style.display = "none";
+
+    list.forEach(recipe => {
+
+        const card = document.createElement("article");
+
+        card.className = "recipe-card";
+
+        card.innerHTML = `
+            <div
+                class="recipe-image"
+                style="background: ${getRecipeBackground(recipe.id)}"
+            >
+                ${recipe.emoji}
+            </div>
+
+            <div class="recipe-info">
+
+                <h3>${recipe.title}</h3>
+
+                <p>${recipe.description}</p>
+
+                <div class="card-meta">
+                    <span>⏱ ${recipe.time} min</span>
+                    <span>${capitalize(recipe.difficulty)}</span>
+                </div>
+
+            </div>
+        `;
+
+        card.addEventListener("click", () => {
+            openRecipe(recipe);
+        });
+
+        recipeGrid.appendChild(card);
+    });
+}
 
 
-      const searchableText =
-        `
-          ${recipe.title}
-          ${recipe.description}
-          ${recipe.tag}
-          ${recipe.categories.join(" ")}
-        `.toLowerCase();
+/* =========================
+   BACKGROUND
+========================= */
+
+function getRecipeBackground(id) {
+
+    const backgrounds = {
+        "chicken-suqaar": "#ead1bd",
+        "one-pot-bariis": "#ddd5b5",
+        "chicken-suugo": "#d7b8a8",
+        "lentil-suugo": "#c9d0bd",
+        "potato-stew": "#ddd0aa",
+        "spiced-chicken": "#e5c29e"
+    };
+
+    return backgrounds[id] || "#ded4c5";
+}
 
 
-      const searchMatch =
-        searchableText.includes(
-          searchTerm.toLowerCase()
-        );
+/* =========================
+   OPEN RECIPE
+========================= */
 
+function openRecipe(recipe) {
 
-      return categoryMatch && searchMatch;
+    currentRecipe = recipe;
 
+    modalTitle.textContent = recipe.title;
+    modalEmoji.textContent = recipe.emoji;
+
+    modalCategory.textContent =
+        recipe.category.replace("-", " ").toUpperCase();
+
+    modalDescription.textContent = recipe.description;
+
+    ingredientsList.innerHTML = "";
+
+    recipe.ingredients.forEach(item => {
+
+        const li = document.createElement("li");
+
+        li.textContent = item;
+
+        ingredientsList.appendChild(li);
     });
 
 
-  recipeGrid.innerHTML =
-    filteredRecipes
-      .map(recipe => createRecipeCard(recipe))
-      .join("");
+    stepsList.innerHTML = "";
+
+    recipe.steps.forEach(step => {
+
+        const li = document.createElement("li");
+
+        li.textContent = step;
+
+        stepsList.appendChild(li);
+    });
 
 
-  emptyMessage.style.display =
-    filteredRecipes.length
-      ? "none"
-      : "block";
+    updateSaveButton();
 
+    recipeModal.classList.add("show");
 }
 
 
-/* ==========================================
-   RECIPE CARD
-========================================== */
+/* =========================
+   CLOSE RECIPE
+========================= */
 
-function createRecipeCard(recipe) {
+function closeRecipeModal() {
 
-  const isSaved =
-    savedRecipes.includes(recipe.id);
+    recipeModal.classList.remove("show");
+}
 
+closeModal.addEventListener("click", closeRecipeModal);
 
-  return `
-
-    <article
-      class="recipe-card"
-      data-recipe="${recipe.id}"
-    >
-
-      <div
-        class="card-image"
-        style="background:${recipe.background}"
-      >
-
-        <span class="card-emoji">
-          ${recipe.emoji}
-        </span>
-
-      </div>
+modalOverlay.addEventListener("click", closeRecipeModal);
 
 
-      <div class="card-body">
+/* =========================
+   SAVE
+========================= */
 
-        <div class="card-top">
+function updateSaveButton() {
 
-          <span class="card-tag">
-            ${recipe.tag}
-          </span>
+    if (!currentRecipe) return;
 
+    const isSaved =
+        savedRecipes.includes(currentRecipe.id);
 
-          <button
-            class="save-card ${isSaved ? "saved" : ""}"
-            data-save="${recipe.id}"
-          >
-            ${isSaved ? "♥" : "♡"}
-          </button>
-
-        </div>
-
-
-        <h3>
-          ${recipe.title}
-        </h3>
-
-
-        <p>
-          ${recipe.description}
-        </p>
-
-
-        <div class="card-meta">
-
-          <span>
-            ⏱ ${recipe.time} min
-          </span>
-
-          <span>
-            ${recipe.difficulty}
-          </span>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  `;
+    saveRecipeBtn.textContent =
+        isSaved ? "♥ Saved" : "♡ Save recipe";
 }
 
 
-/* ==========================================
+saveRecipeBtn.addEventListener("click", () => {
+
+    if (!currentRecipe) return;
+
+    const index =
+        savedRecipes.indexOf(currentRecipe.id);
+
+    if (index === -1) {
+
+        savedRecipes.push(currentRecipe.id);
+
+        showToast("Saved for later, Chef.");
+
+    } else {
+
+        savedRecipes.splice(index, 1);
+
+        showToast("Removed from saved recipes.");
+    }
+
+    localStorage.setItem(
+        "sahanSaved",
+        JSON.stringify(savedRecipes)
+    );
+
+    updateSaveButton();
+
+    updateSavedCount();
+});
+
+
+/* =========================
+   COOKED
+========================= */
+
+cookedBtn.addEventListener("click", () => {
+
+    if (!currentRecipe) return;
+
+    if (!cookedRecipes.includes(currentRecipe.id)) {
+
+        cookedRecipes.push(currentRecipe.id);
+
+        localStorage.setItem(
+            "sahanCooked",
+            JSON.stringify(cookedRecipes)
+        );
+
+        updateKitchen();
+
+        showToast(
+            "Look at you, Chef. Dinner handled. ✦"
+        );
+
+    } else {
+
+        showToast(
+            "Already counted, Chef 😌"
+        );
+    }
+});
+
+
+/* =========================
+   RANDOM RECIPE
+========================= */
+
+function pickRandomRecipe() {
+
+    const randomIndex =
+        Math.floor(Math.random() * recipes.length);
+
+    const recipe = recipes[randomIndex];
+
+    decisionEmoji.textContent = recipe.emoji;
+
+    decisionTitle.textContent = recipe.title;
+
+    decisionText.textContent =
+        `${recipe.time} minutes. ${recipe.description}`;
+
+    decisionCook.onclick = () => {
+
+        decisionModal.classList.remove("show");
+
+        openRecipe(recipe);
+    };
+
+    decisionModal.classList.add("show");
+}
+
+
+surpriseBtn.addEventListener(
+    "click",
+    pickRandomRecipe
+);
+
+surpriseMood.addEventListener(
+    "click",
+    pickRandomRecipe
+);
+
+closeDecision.addEventListener(
+    "click",
+    () => decisionModal.classList.remove("show")
+);
+
+decisionAgain.addEventListener(
+    "click",
+    pickRandomRecipe
+);
+
+
+/* =========================
    FILTERS
-========================================== */
+========================= */
 
-document
-  .querySelectorAll(".filter")
-  .forEach(button => {
+document.querySelectorAll(".filter-btn").forEach(button => {
 
     button.addEventListener("click", () => {
 
-      document
-        .querySelectorAll(".filter")
-        .forEach(item => {
-          item.classList.remove("active");
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(btn => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        if (filter === "all") {
+
+            displayRecipes(recipes);
+
+        } else {
+
+            const filtered =
+                recipes.filter(recipe =>
+                    recipe.categories.includes(filter)
+                );
+
+            displayRecipes(filtered);
+        }
+    });
+});
+
+
+/* =========================
+   MOOD BUTTONS
+========================= */
+
+document.querySelectorAll(".mood-card[data-filter]")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const filter = button.dataset.filter;
+
+            const matching =
+                recipes.filter(recipe =>
+                    recipe.categories.includes(filter)
+                );
+
+            displayRecipes(matching);
+
+            document
+                .querySelectorAll(".filter-btn")
+                .forEach(btn => {
+
+                    btn.classList.toggle(
+                        "active",
+                        btn.dataset.filter === filter
+                    );
+
+                });
+
+            document
+                .getElementById("recipes")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
         });
-
-
-      button.classList.add("active");
-
-
-      activeCategory =
-        button.dataset.category;
-
-
-      renderRecipes();
 
     });
 
-  });
 
-
-/* ==========================================
+/* =========================
    SEARCH
-========================================== */
+========================= */
 
-searchInput.addEventListener(
-  "input",
-  event => {
+searchInput.addEventListener("input", () => {
 
-    searchTerm =
-      event.target.value;
+    const search =
+        searchInput.value.toLowerCase().trim();
 
-    renderRecipes();
-
-  }
-);
-
-
-/* ==========================================
-   RECIPE GRID CLICK
-========================================== */
-
-recipeGrid.addEventListener(
-  "click",
-  event => {
-
-    const saveButton =
-      event.target.closest("[data-save]");
-
-
-    if (saveButton) {
-
-      saveRecipe(
-        saveButton.dataset.save
-      );
-
-      return;
-
-    }
-
-
-    const card =
-      event.target.closest(".recipe-card");
-
-
-    if (!card) return;
-
-
-    openRecipe(
-      card.dataset.recipe
-    );
-
-  }
-);
-
-
-/* ==========================================
-   SAVE RECIPE
-========================================== */
-
-function saveRecipe(id) {
-
-  if (savedRecipes.includes(id)) {
-
-    savedRecipes =
-      savedRecipes.filter(
-        recipeId => recipeId !== id
-      );
-
-    showToast(
-      "Removed from your saved recipes"
-    );
-
-  } else {
-
-    savedRecipes.push(id);
-
-    showToast(
-      "Saved to your kitchen ♡"
-    );
-
-  }
-
-
-  localStorage.setItem(
-    "sahanSaved",
-    JSON.stringify(savedRecipes)
-  );
-
-
-  renderRecipes();
-
-  updateStats();
-
-
-  if (currentRecipe) {
-    updateModalSave();
-  }
-
-}
-
-
-/* ==========================================
-   COOK RECIPE
-========================================== */
-
-function cookRecipe(id) {
-
-  if (!cookedRecipes.includes(id)) {
-
-    cookedRecipes.push(id);
-
-
-    localStorage.setItem(
-      "sahanCooked",
-      JSON.stringify(cookedRecipes)
-    );
-
-
-    showToast(
-      "+20 points! Recipe cooked ✦"
-    );
-
-
-    updateStats();
-
-  } else {
-
-    showToast(
-      "You've already cooked this one ✦"
-    );
-
-  }
-
-}
-
-
-/* ==========================================
-   OPEN RECIPE MODAL
-========================================== */
-
-function openRecipe(id) {
-
-  const recipe =
-    recipes.find(
-      item => item.id === id
-    );
-
-
-  if (!recipe) return;
-
-
-  currentRecipe = recipe;
-
-
-  document.getElementById(
-    "modalImage"
-  ).textContent =
-    recipe.emoji;
-
-
-  document.getElementById(
-    "modalImage"
-  ).style.background =
-    recipe.background;
-
-
-  document.getElementById(
-    "modalCategory"
-  ).textContent =
-    recipe.tag.toUpperCase();
-
-
-  document.getElementById(
-    "modalTitle"
-  ).textContent =
-    recipe.title;
-
-
-  document.getElementById(
-    "modalDescription"
-  ).textContent =
-    recipe.description;
-
-
-  document.getElementById(
-    "modalInfo"
-  ).innerHTML = `
-
-    <span>
-      ⏱ ${recipe.time} min
-    </span>
-
-    <span>•</span>
-
-    <span>
-      ${recipe.difficulty}
-    </span>
-
-  `;
-
-
-  document.getElementById(
-    "ingredients"
-  ).innerHTML =
-
-    recipe.ingredients
-      .map(
-        ingredient =>
-          `<li>${ingredient}</li>`
-      )
-      .join("");
-
-
-  document.getElementById(
-    "steps"
-  ).innerHTML =
-
-    recipe.steps
-      .map(
-        step =>
-          `<li>${step}</li>`
-      )
-      .join("");
-
-
-  updateModalSave();
-
-
-  modal.classList.remove(
-    "hidden"
-  );
-
-
-  document.body.style.overflow =
-    "hidden";
-
-}
-
-
-/* ==========================================
-   MODAL SAVE
-========================================== */
-
-function updateModalSave() {
-
-  const button =
-    document.getElementById(
-      "saveRecipeButton"
-    );
-
-
-  const saved =
-    savedRecipes.includes(
-      currentRecipe.id
-    );
-
-
-  button.textContent =
-    saved
-      ? "♥ Saved"
-      : "♡ Save";
-
-}
-
-
-/* ==========================================
-   MODAL BUTTONS
-========================================== */
-
-document
-  .querySelectorAll("[data-open-recipe]")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        openRecipe(
-          button.dataset.openRecipe
+    const results =
+        recipes.filter(recipe =>
+            recipe.title.toLowerCase().includes(search) ||
+            recipe.description.toLowerCase().includes(search) ||
+            recipe.category.toLowerCase().includes(search)
         );
 
-      }
-    );
+    displayRecipes(results);
+});
 
-  });
 
+/* =========================
+   SAVED BUTTON
+========================= */
 
-document
-  .querySelectorAll("[data-close]")
-  .forEach(element => {
+document.getElementById("savedBtn")
+    .addEventListener("click", () => {
 
-    element.addEventListener(
-      "click",
-      closeModal
-    );
+        const saved =
+            recipes.filter(recipe =>
+                savedRecipes.includes(recipe.id)
+            );
 
-  });
+        displayRecipes(saved);
 
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(btn =>
+                btn.classList.remove("active")
+            );
 
-function closeModal() {
+        document
+            .getElementById("recipes")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
 
-  modal.classList.add(
-    "hidden"
-  );
+        if (saved.length === 0) {
 
-  document.body.style.overflow =
-    "";
-
-}
-
-
-document
-  .getElementById("saveRecipeButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      saveRecipe(
-        currentRecipe.id
-      );
-
-    }
-  );
-
-
-document
-  .getElementById("cookedButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      cookRecipe(
-        currentRecipe.id
-      );
-
-    }
-  );
-
-
-/* ESC KEY */
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    if (event.key === "Escape") {
-      closeModal();
-    }
-
-  }
-);
-
-
-/* ==========================================
-   SAVED RECIPES
-========================================== */
-
-document
-  .getElementById("savedButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      if (!savedRecipes.length) {
-
-        showToast(
-          "No saved recipes yet — tap ♡ on a recipe"
-        );
-
-        return;
-
-      }
-
-
-      activeCategory = "all";
-
-      searchTerm = "";
-
-      searchInput.value = "";
-
-
-      document
-        .querySelectorAll(".filter")
-        .forEach(filter => {
-
-          filter.classList.toggle(
-            "active",
-            filter.dataset.category === "all"
-          );
-
-        });
-
-
-      const saved =
-        recipes.filter(
-          recipe =>
-            savedRecipes.includes(
-              recipe.id
-            )
-        );
-
-
-      recipeGrid.innerHTML =
-        saved
-          .map(recipe =>
-            createRecipeCard(recipe)
-          )
-          .join("");
-
-
-      emptyMessage.style.display =
-        "none";
-
-
-      document
-        .getElementById("recipes")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }
-  );
-
-
-/* ==========================================
-   GAMIFICATION
-========================================== */
-
-function updateStats() {
-
-  const cookedCount =
-    cookedRecipes.length;
-
-
-  const points =
-    cookedCount * 20;
-
-
-  const target = 3;
-
-
-  const progress =
-    Math.min(
-      (cookedCount / target) * 100,
-      100
-    );
-
-
-  document.getElementById(
-    "savedCount"
-  ).textContent =
-    savedRecipes.length;
-
-
-  document.getElementById(
-    "progressText"
-  ).textContent =
-    `${cookedCount} / ${target} recipes cooked`;
-
-
-  document.getElementById(
-    "pointsText"
-  ).textContent =
-    `${points} pts`;
-
-
-  document.getElementById(
-    "progressBar"
-  ).style.width =
-    `${progress}%`;
-
-
-  document
-    .querySelectorAll(".badge")
-    .forEach(badge => {
-
-      const required =
-        Number(
-          badge.dataset.required
-        );
-
-
-      const unlocked =
-        cookedCount >= required;
-
-
-      badge.classList.toggle(
-        "unlocked",
-        unlocked
-      );
-
-
-      badge.querySelector(
-        "small"
-      ).textContent =
-        unlocked
-          ? "UNLOCKED"
-          : "LOCKED";
-
+            showToast(
+                "Nothing saved yet, Chef."
+            );
+        }
     });
 
+
+/* =========================
+   SAVED COUNT
+========================= */
+
+function updateSavedCount() {
+
+    savedCount.textContent =
+        savedRecipes.length;
 }
 
 
-/* ==========================================
+/* =========================
+   KITCHEN PROGRESS
+========================= */
+
+function updateKitchen() {
+
+    const cookedCount =
+        cookedRecipes.length;
+
+    const points =
+        cookedCount * 20;
+
+    const progress =
+        Math.min((cookedCount / 3) * 100, 100);
+
+    pointsText.textContent =
+        `${points} points`;
+
+    progressText.textContent =
+        `${cookedCount} / 3 cooks`;
+
+    progressFill.style.width =
+        `${progress}%`;
+}
+
+
+/* =========================
    TOAST
-========================================== */
+========================= */
+
+let toastTimer;
 
 function showToast(message) {
 
-  toast.textContent =
-    message;
+    clearTimeout(toastTimer);
 
+    toast.textContent = message;
 
-  toast.classList.add(
-    "show"
-  );
+    toast.classList.add("show");
 
+    toastTimer = setTimeout(() => {
 
-  clearTimeout(
-    window.toastTimer
-  );
+        toast.classList.remove("show");
 
-
-  window.toastTimer =
-    setTimeout(() => {
-
-      toast.classList.remove(
-        "show"
-      );
-
-    }, 2200);
-
+    }, 2500);
 }
 
 
-/* ==========================================
+/* =========================
+   HELPER
+========================= */
+
+function capitalize(text) {
+
+    return text.charAt(0).toUpperCase() +
+        text.slice(1);
+}
+
+
+/* =========================
    START APP
-========================================== */
+========================= */
 
-renderRecipes();
+displayRecipes();
 
-updateStats();
+updateSavedCount();
+
+updateKitchen();
