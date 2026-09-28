@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sahan — Somali Recipes, Made Easy</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="#" class="logo">
+      <span class="logo-symbol">✦</span>
+      <span>SAHAN</span>
+    </a>
+
+    <nav>
+      <a href="#recipes">Recipes</a>
+      <a href="#journey">My Kitchen</a>
+
+      <button class="saved-button" id="savedButton">
+        ♡ Saved <span id="savedCount">0</span>
+      </button>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-text">
+
+        <p class="eyebrow">
+          SOMALI-INSPIRED • EVERYDAY COOKING
+        </p>
+
+        <h1>
+          Good food
+          <em>doesn't have to be</em>
+          complicated.
+        </h1>
+
+        <p class="intro">
+          Easy recipes for busy days, cozy nights,
+          and anyone who loves a good plate of food.
+        </p>
+
+        <div class="search-box">
+          <span>⌕</span>
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search chicken, bariis, suugo..."
+          >
+        </div>
+
+      </div>
+
+
+      <!-- FEATURED RECIPE -->
+      <div class="featured-card">
+
+        <div class="featured-image">
+          <span class="steam steam-one">〰</span>
+          <span class="steam steam-two">〰</span>
+
+          <div class="plate">
+            🍗
+          </div>
+        </div>
+
+        <div class="featured-content">
+
+          <span class="small-label">
+            TODAY'S EASY DISH
+          </span>
+
+          <h2>Chicken Suqaar</h2>
+
+          <p>
+            Tender chicken, peppers and onions
+            with warm Somali spices.
+          </p>
+
+          <div class="recipe-info">
+            <span>⏱ 35 min</span>
+            <span>•</span>
+            <span>Easy</span>
+          </div>
+
+          <button
+            class="primary-button"
+            data-open-recipe="chicken-suqaar"
+          >
+            Cook this
+            <span>→</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RECIPES -->
+    <section class="recipes-section" id="recipes">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">FIND YOUR PLATE</p>
+
+          <h2>
+            What are we cooking?
+          </h2>
+        </div>
+
+      </div>
+
+
+      <!-- FILTERS -->
+      <div class="filters">
+
+        <button
+          class="filter active"
+          data-category="all"
+        >
+          All recipes
+        </button>
+
+        <button
+          class="filter"
+          data-category="chicken"
+        >
+          🍗 Chicken
+        </button>
+
+        <button
+          class="filter"
+          data-category="one-pot"
+        >
+          🥘 One pot
+        </button>
+
+        <button
+          class="filter"
+          data-category="meat-free"
+        >
+          🌿 Meat-free
+        </button>
+
+        <button
+          class="filter"
+          data-category="quick"
+        >
+          ⚡ Quick
+        </button>
+
+      </div>
+
+
+      <!-- RECIPE CARDS -->
+      <div
+        class="recipe-grid"
+        id="recipeGrid"
+      ></div>
+
+      <p
+        class="empty-message"
+        id="emptyMessage"
+      >
+        No recipes found. Try another search.
+      </p>
+
+    </section>
+
+
+    <!-- GAMIFICATION -->
+    <section
+      class="journey-section"
+      id="journey"
+    >
+
+      <div class="journey-content">
+
+        <p class="eyebrow">
+          YOUR KITCHEN JOURNEY
+        </p>
+
+        <h2>
+          A little cooking
+          <br>
+          streak never hurt.
+        </h2>
+
+        <p>
+          Cook recipes, collect points and unlock
+          little kitchen badges along the way.
+        </p>
+
+
+        <div class="progress-container">
+
+          <div class="progress-label">
+
+            <span id="progressText">
+              0 / 3 recipes cooked
+            </span>
+
+            <span id="pointsText">
+              0 pts
+            </span>
+
+          </div>
+
+          <div class="progress-bar">
+            <span id="progressBar"></span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BADGES -->
+      <div class="badges">
+
+        <div
+          class="badge"
+          data-required="3"
+        >
+
+          <div class="badge-icon">
+            🥘
+          </div>
+
+          <strong>
+            Little Pot
+          </strong>
+
+          <span>
+            Cook 3 recipes
+          </span>
+
+          <small>
+            LOCKED
+          </small>
+
+        </div>
+
+
+        <div
+          class="badge"
+          data-required="5"
+        >
+
+          <div class="badge-icon">
+            🍗
+          </div>
+
+          <strong>
+            Chicken Club
+          </strong>
+
+          <span>
+            Cook 5 recipes
+          </span>
+
+          <small>
+            LOCKED
+          </small>
+
+        </div>
+
+
+        <div
+          class="badge"
+          data-required="8"
+        >
+
+          <div class="badge-icon">
+            ✦
+          </div>
+
+          <strong>
+            Sahan Cook
+          </strong>
+
+          <span>
+            Cook 8 recipes
+          </span>
+
+          <small>
+            LOCKED
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- RECIPE MODAL -->
+  <div
+    class="modal hidden"
+    id="recipeModal"
+  >
+
+    <div
+      class="modal-background"
+      data-close
+    ></div>
+
+
+    <article class="recipe-modal">
+
+      <button
+        class="close-button"
+        data-close
+      >
+        ×
+      </button>
+
+
+      <div
+        class="modal-image"
+        id="modalImage"
+      >
+        🍗
+      </div>
+
+
+      <div class="modal-content">
+
+        <p
+          class="eyebrow"
+          id="modalCategory"
+        >
+          CHICKEN
+        </p>
+
+        <h2 id="modalTitle">
+          Chicken Suqaar
+        </h2>
+
+        <p id="modalDescription"></p>
+
+
+        <div
+          class="modal-info"
+          id="modalInfo"
+        ></div>
+
+
+        <div class="modal-buttons">
+
+          <button
+            class="secondary-button"
+            id="saveRecipeButton"
+          >
+            ♡ Save
+          </button>
+
+          <button
+            class="primary-button"
+            id="cookedButton"
+          >
+            ✓ I cooked this
+          </button>
+
+        </div>
+
+
+        <hr>
+
+
+        <h3>
+          You'll need
+        </h3>
+
+        <ul
+          class="ingredients"
+          id="ingredients"
+        ></ul>
+
+
+        <h3>
+          Let's cook
+        </h3>
+
+        <ol
+          class="steps"
+          id="steps"
+        ></ol>
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <!-- TOAST -->
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>
