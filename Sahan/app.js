@@ -72,7 +72,7 @@ const recipes = [
         time: 35,
         difficulty: "Easy",
         category: "chicken",
-        tags: ["chicken"],
+        tags: ["chicken", "pasta"],
 
         ingredients: [
             "300g chicken",
@@ -184,6 +184,192 @@ const recipes = [
             "Add onion and garlic.",
             "Cook until the chicken is fully done."
         ]
+    },
+
+
+    /* =========================
+       PASTA RECIPES
+    ========================= */
+
+    {
+        id: "creamy-chicken-pasta",
+        title: "Creamy Chicken Pasta",
+        emoji: "🍝",
+        time: 30,
+        difficulty: "Easy",
+        category: "pasta",
+        tags: ["pasta", "chicken", "creamy"],
+        video: "pasta1.mp4",
+
+        ingredients: [
+            "250g pasta",
+            "300g chicken breast, sliced",
+            "1 cup cooking cream",
+            "2 cloves garlic",
+            "1 small onion",
+            "½ cup grated parmesan",
+            "1 tbsp butter",
+            "Salt and black pepper"
+        ],
+
+        steps: [
+            "Cook the pasta until al dente and reserve a little pasta water.",
+            "Season the chicken with salt and pepper.",
+            "Melt butter in a pan and cook the chicken until golden.",
+            "Add onion and garlic and cook until soft.",
+            "Pour in the cream and add parmesan.",
+            "Add the pasta and toss until coated.",
+            "Add a little pasta water if needed and serve."
+        ]
+    },
+
+    {
+        id: "spicy-tomato-pasta",
+        title: "Spicy Tomato Pasta",
+        emoji: "🌶️",
+        time: 25,
+        difficulty: "Easy",
+        category: "pasta",
+        tags: ["pasta", "quick", "spicy"],
+        video: "pasta2.mp4",
+
+        ingredients: [
+            "250g pasta",
+            "2 cups tomatoes, chopped",
+            "1 onion",
+            "3 cloves garlic",
+            "1 tsp chilli flakes",
+            "1 tbsp tomato paste",
+            "2 tbsp olive oil",
+            "Salt and black pepper"
+        ],
+
+        steps: [
+            "Cook the pasta and reserve some pasta water.",
+            "Heat oil and cook the onion until soft.",
+            "Add garlic and chilli flakes.",
+            "Add tomato paste and chopped tomatoes.",
+            "Season and simmer for 10 minutes.",
+            "Toss the pasta through the sauce.",
+            "Add pasta water if needed and serve."
+        ]
+    },
+
+    {
+        id: "chilli-crisp-fettuccine",
+        title: "Chilli Crisp Fettuccine Alfredo",
+        emoji: "🍜",
+        time: 25,
+        difficulty: "Easy",
+        category: "pasta",
+        tags: ["pasta", "creamy", "spicy"],
+        video: "pasta3.mp4",
+
+        ingredients: [
+            "250g fettuccine",
+            "1 cup cooking cream",
+            "½ cup grated parmesan",
+            "2 tbsp butter",
+            "2 cloves garlic",
+            "1–2 tbsp chilli crisp",
+            "Salt and black pepper"
+        ],
+
+        steps: [
+            "Cook the fettuccine until al dente.",
+            "Melt butter in a pan.",
+            "Add garlic and cook gently.",
+            "Pour in the cream and add parmesan.",
+            "Season with salt and pepper.",
+            "Add the chilli crisp.",
+            "Toss in the pasta and coat evenly before serving."
+        ]
+    },
+
+    {
+        id: "creamy-tomato-garlic-pasta",
+        title: "Creamy Tomato & Garlic Pasta",
+        emoji: "🍅",
+        time: 30,
+        difficulty: "Easy",
+        category: "pasta",
+        tags: ["pasta", "creamy", "vegetarian"],
+        video: "pasta4.mp4",
+
+        ingredients: [
+            "250g pasta",
+            "2 cups tomatoes",
+            "3 cloves garlic",
+            "½ cup cooking cream",
+            "1 tbsp tomato paste",
+            "2 tbsp olive oil",
+            "½ tsp Italian herbs",
+            "Salt and black pepper"
+        ],
+
+        steps: [
+            "Cook the pasta until al dente.",
+            "Heat olive oil and gently cook the garlic.",
+            "Add tomato paste and chopped tomatoes.",
+            "Season with herbs, salt and pepper.",
+            "Simmer until the tomatoes soften.",
+            "Stir in the cream.",
+            "Add pasta and toss until well coated."
+        ]
+    },
+
+    {
+        id: "caramelized-onion-pasta",
+        title: "Caramelized Onion Pasta",
+        emoji: "🧅",
+        time: 35,
+        difficulty: "Easy",
+        category: "pasta",
+        tags: ["pasta", "vegetarian", "comfort"],
+        video: "pasta5.mp4",
+
+        ingredients: [
+            "250g pasta",
+            "2 large onions, thinly sliced",
+            "2 cloves garlic",
+            "2 tbsp butter",
+            "½ cup parmesan",
+            "½ cup pasta water",
+            "1 tsp Italian herbs",
+            "Salt and black pepper"
+        ],
+
+        steps: [
+            "Cook the pasta and reserve some pasta water.",
+            "Melt butter in a pan.",
+            "Add onions and cook slowly until deeply golden.",
+            "Add garlic and Italian herbs.",
+            "Add the cooked pasta.",
+            "Stir in parmesan and enough pasta water to make it silky.",
+            "Season and serve."
+        ]
+    }
+];
+
+
+/* =========================
+   CHEF'S SELECTION
+   Keep the homepage selection
+   connected to the full recipe menu.
+========================= */
+
+const chefSelection = [
+    {
+        id: "chicken-suqaar",
+        label: "HOUSE SPECIAL"
+    },
+    {
+        id: "creamy-chicken-pasta",
+        label: "PASTA ROOM"
+    },
+    {
+        id: "chilli-crisp-fettuccine",
+        label: "CHEF'S FAVOURITE"
     }
 ];
 
@@ -192,9 +378,8 @@ const recipes = [
    STATE
 ========================= */
 
-let currentFilter = "all";
-let currentSearch = "";
 let currentRecipe = null;
+let currentKitchenTab = "saved";
 
 let savedRecipes =
     JSON.parse(localStorage.getItem("sahanSaved")) || [];
@@ -204,28 +389,66 @@ let cookedRecipes =
 
 
 /* =========================
-   ELEMENTS
+   GENERAL ELEMENTS
 ========================= */
 
-const recipeGrid = document.getElementById("recipeGrid");
+const surpriseBtn =
+    document.getElementById("surpriseBtn");
 
-const searchInput = document.getElementById("searchInput");
+const savedCount =
+    document.getElementById("savedCount");
 
-const surpriseBtn = document.getElementById("surpriseBtn");
+const toast =
+    document.getElementById("toast");
 
-const savedBtn = document.getElementById("savedBtn");
 
-const savedCount = document.getElementById("savedCount");
+/* =========================
+   MY KITCHEN ELEMENTS
+========================= */
 
-const recipeModal = document.getElementById("recipeModal");
+const kitchenTrigger =
+    document.getElementById("kitchenTrigger");
 
-const decisionModal = document.getElementById("decisionModal");
+const kitchenPanel =
+    document.getElementById("kitchenPanel");
+
+const kitchenPanelOverlay =
+    document.querySelector(".kitchen-panel-overlay");
+
+const closeKitchen =
+    document.getElementById("closeKitchen");
+
+const kitchenList =
+    document.getElementById("kitchenList");
+
+const kitchenTabs =
+    document.querySelectorAll(".kitchen-tab");
+
+const pointsValue =
+    document.getElementById("pointsValue");
+
+const cookedCount =
+    document.getElementById("cookedCount");
+
+const dashboardSavedCount =
+    document.getElementById("dashboardSavedCount");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+
+/* =========================
+   RECIPE MODAL ELEMENTS
+========================= */
+
+const recipeModal =
+    document.getElementById("recipeModal");
 
 const closeRecipeModal =
     document.getElementById("closeRecipeModal");
-
-const closeDecisionModal =
-    document.getElementById("closeDecisionModal");
 
 const modalImage =
     document.getElementById("modalImage");
@@ -254,6 +477,17 @@ const saveRecipeBtn =
 const cookedBtn =
     document.getElementById("cookedBtn");
 
+
+/* =========================
+   DECISION MODAL
+========================= */
+
+const decisionModal =
+    document.getElementById("decisionModal");
+
+const closeDecisionModal =
+    document.getElementById("closeDecisionModal");
+
 const decisionEmoji =
     document.getElementById("decisionEmoji");
 
@@ -269,17 +503,22 @@ const tryAgainBtn =
 const cookDecisionBtn =
     document.getElementById("cookDecisionBtn");
 
-const pointsValue =
-    document.getElementById("pointsValue");
 
-const progressText =
-    document.getElementById("progressText");
+/* =========================
+   PASTA VIDEO MODAL
+========================= */
 
-const progressFill =
-    document.getElementById("progressFill");
+const pastaVideoModal =
+    document.getElementById("pastaVideoModal");
 
-const toast =
-    document.getElementById("toast");
+const closePastaVideoModal =
+    document.getElementById("closePastaVideoModal");
+
+const pastaModalVideo =
+    document.getElementById("pastaModalVideo");
+
+const pastaModalTitle =
+    document.getElementById("pastaModalTitle");
 
 
 /* =========================
@@ -294,7 +533,13 @@ function getRecipeBackground(id) {
         "chicken-suugo": "#593e35",
         "lentil-suugo": "#4d5140",
         "potato-stew": "#514738",
-        "spiced-chicken": "#624239"
+        "spiced-chicken": "#624239",
+
+        "creamy-chicken-pasta": "#594238",
+        "spicy-tomato-pasta": "#673d32",
+        "chilli-crisp-fettuccine": "#503d35",
+        "creamy-tomato-garlic-pasta": "#60463a",
+        "caramelized-onion-pasta": "#514239"
     };
 
     return backgrounds[id] || "#382f28";
@@ -302,105 +547,14 @@ function getRecipeBackground(id) {
 
 
 /* =========================
-   DISPLAY RECIPES
+   FIND RECIPE
 ========================= */
 
-function displayRecipes() {
+function findRecipe(id) {
 
-    let filteredRecipes = [...recipes];
-
-
-    // Filter by mood
-    if (currentFilter !== "all") {
-
-        filteredRecipes = filteredRecipes.filter(recipe =>
-            recipe.tags.includes(currentFilter)
-        );
-    }
-
-
-    // Search
-    if (currentSearch.trim() !== "") {
-
-        const searchTerm =
-            currentSearch.toLowerCase().trim();
-
-        filteredRecipes = filteredRecipes.filter(recipe =>
-            recipe.title.toLowerCase().includes(searchTerm)
-        );
-    }
-
-
-    // Saved recipes
-    if (currentFilter === "saved") {
-
-        filteredRecipes = recipes.filter(recipe =>
-            savedRecipes.includes(recipe.id)
-        );
-    }
-
-
-    recipeGrid.innerHTML = "";
-
-
-    if (filteredRecipes.length === 0) {
-
-        recipeGrid.innerHTML = `
-            <div class="empty-state">
-                <span>🍽️</span>
-                <p>No recipes found.</p>
-            </div>
-        `;
-
-        return;
-    }
-
-
-    filteredRecipes.forEach(recipe => {
-
-        const card =
-            document.createElement("article");
-
-        card.className = "recipe-card";
-
-        card.innerHTML = `
-            <div
-                class="recipe-image"
-                style="background: ${getRecipeBackground(recipe.id)}"
-            >
-                ${recipe.emoji}
-            </div>
-
-            <div class="recipe-info">
-
-                <h3>${recipe.title}</h3>
-
-                <div class="card-meta">
-
-                    <span>
-                        ⏱ ${recipe.time} min
-                    </span>
-
-                    <span>
-                        ${recipe.difficulty}
-                    </span>
-
-                </div>
-
-            </div>
-        `;
-
-
-        card.addEventListener("click", () => {
-
-            openRecipe(recipe);
-
-        });
-
-
-        recipeGrid.appendChild(card);
-
-    });
+    return recipes.find(
+        recipe => recipe.id === id
+    );
 }
 
 
@@ -410,55 +564,91 @@ function displayRecipes() {
 
 function openRecipe(recipe) {
 
+    if (!recipe || !recipeModal) {
+        return;
+    }
+
     currentRecipe = recipe;
 
-    modalImage.textContent = recipe.emoji;
+    if (modalImage) {
 
-    modalImage.style.background =
-        getRecipeBackground(recipe.id);
+        modalImage.textContent =
+            recipe.emoji;
 
-    modalTitle.textContent = recipe.title;
+        modalImage.style.background =
+            getRecipeBackground(recipe.id);
+    }
 
-    modalCategory.textContent =
-        recipe.category.replace("-", " ").toUpperCase();
+    if (modalTitle) {
 
-    modalTime.textContent =
-        `⏱ ${recipe.time} min`;
+        modalTitle.textContent =
+            recipe.title;
+    }
 
-    modalDifficulty.textContent =
-        recipe.difficulty;
+    if (modalCategory) {
+
+        modalCategory.textContent =
+            recipe.category
+                .replace("-", " ")
+                .toUpperCase();
+    }
+
+    if (modalTime) {
+
+        modalTime.textContent =
+            `⏱ ${recipe.time} min`;
+    }
+
+    if (modalDifficulty) {
+
+        modalDifficulty.textContent =
+            recipe.difficulty;
+    }
 
 
-    ingredientsList.innerHTML = "";
+    /* Ingredients */
 
-    recipe.ingredients.forEach(ingredient => {
+    if (ingredientsList) {
 
-        const li =
-            document.createElement("li");
+        ingredientsList.innerHTML = "";
 
-        li.textContent = ingredient;
+        recipe.ingredients.forEach(
+            ingredient => {
 
-        ingredientsList.appendChild(li);
+                const li =
+                    document.createElement("li");
 
-    });
+                li.textContent =
+                    ingredient;
+
+                ingredientsList.appendChild(li);
+            }
+        );
+    }
 
 
-    stepsList.innerHTML = "";
+    /* Steps */
 
-    recipe.steps.forEach(step => {
+    if (stepsList) {
 
-        const li =
-            document.createElement("li");
+        stepsList.innerHTML = "";
 
-        li.textContent = step;
+        recipe.steps.forEach(
+            step => {
 
-        stepsList.appendChild(li);
+                const li =
+                    document.createElement("li");
 
-    });
+                li.textContent =
+                    step;
+
+                stepsList.appendChild(li);
+            }
+        );
+    }
 
 
     updateSaveButton();
-
 
     recipeModal.classList.remove("hidden");
 
@@ -472,10 +662,13 @@ function openRecipe(recipe) {
 
 function closeRecipe() {
 
+    if (!recipeModal) {
+        return;
+    }
+
     recipeModal.classList.add("hidden");
 
     document.body.style.overflow = "";
-
 }
 
 
@@ -485,24 +678,31 @@ function closeRecipe() {
 
 function saveRecipe() {
 
-    if (!currentRecipe) return;
+    if (!currentRecipe) {
+        return;
+    }
 
-
-    if (savedRecipes.includes(currentRecipe.id)) {
+    if (
+        savedRecipes.includes(
+            currentRecipe.id
+        )
+    ) {
 
         savedRecipes =
             savedRecipes.filter(
-                id => id !== currentRecipe.id
+                id =>
+                    id !== currentRecipe.id
             );
 
         showToast("Removed from saved");
 
     } else {
 
-        savedRecipes.push(currentRecipe.id);
+        savedRecipes.push(
+            currentRecipe.id
+        );
 
         showToast("Saved to your kitchen");
-
     }
 
 
@@ -513,23 +713,30 @@ function saveRecipe() {
 
 
     updateSavedCount();
-
+    updateKitchen();
     updateSaveButton();
-
-    displayRecipes();
+    renderKitchenList();
 }
 
 
 /* =========================
-   SAVE BUTTON
+   UPDATE SAVE BUTTON
 ========================= */
 
 function updateSaveButton() {
 
-    if (!currentRecipe) return;
+    if (
+        !currentRecipe ||
+        !saveRecipeBtn
+    ) {
+        return;
+    }
 
-
-    if (savedRecipes.includes(currentRecipe.id)) {
+    if (
+        savedRecipes.includes(
+            currentRecipe.id
+        )
+    ) {
 
         saveRecipeBtn.textContent =
             "♥ Saved";
@@ -538,20 +745,27 @@ function updateSaveButton() {
 
         saveRecipeBtn.textContent =
             "♥ Save";
-
     }
 }
 
 
 /* =========================
-   SAVED COUNT
+   UPDATE SAVED COUNT
 ========================= */
 
 function updateSavedCount() {
 
-    savedCount.textContent =
-        savedRecipes.length;
+    if (savedCount) {
 
+        savedCount.textContent =
+            savedRecipes.length;
+    }
+
+    if (dashboardSavedCount) {
+
+        dashboardSavedCount.textContent =
+            savedRecipes.length;
+    }
 }
 
 
@@ -561,12 +775,19 @@ function updateSavedCount() {
 
 function markCooked(recipe) {
 
-    if (!recipe) return;
+    if (!recipe) {
+        return;
+    }
 
+    if (
+        !cookedRecipes.includes(
+            recipe.id
+        )
+    ) {
 
-    if (!cookedRecipes.includes(recipe.id)) {
-
-        cookedRecipes.push(recipe.id);
+        cookedRecipes.push(
+            recipe.id
+        );
 
         localStorage.setItem(
             "sahanCooked",
@@ -578,16 +799,16 @@ function markCooked(recipe) {
     } else {
 
         showToast("Already cooked!");
-
     }
 
 
     updateKitchen();
+    renderKitchenList();
 }
 
 
 /* =========================
-   KITCHEN PROGRESS
+   UPDATE KITCHEN
 ========================= */
 
 function updateKitchen() {
@@ -595,116 +816,323 @@ function updateKitchen() {
     const totalRecipes =
         recipes.length;
 
-    const cookedCount =
+    const cooked =
         cookedRecipes.length;
 
     const points =
-        cookedCount * 10;
+        cooked * 10;
 
     const percentage =
-        (cookedCount / totalRecipes) * 100;
+        totalRecipes > 0
+            ? (cooked / totalRecipes) * 100
+            : 0;
 
 
-    pointsValue.textContent =
-        points;
+    if (pointsValue) {
 
-    progressText.textContent =
-        `${cookedCount} / ${totalRecipes}`;
+        pointsValue.textContent =
+            points;
+    }
 
-    progressFill.style.width =
-        `${percentage}%`;
+    if (cookedCount) {
 
+        cookedCount.textContent =
+            cooked;
+    }
 
-    // Badge 1
-    if (cookedCount >= 1) {
+    if (dashboardSavedCount) {
 
-        document
-            .getElementById("badge1")
-            .classList.add("unlocked");
+        dashboardSavedCount.textContent =
+            savedRecipes.length;
+    }
 
+    if (progressText) {
+
+        progressText.textContent =
+            `${cooked} / ${totalRecipes}`;
+    }
+
+    if (progressFill) {
+
+        progressFill.style.width =
+            `${percentage}%`;
     }
 
 
-    // Badge 2
-    if (cookedCount >= 3) {
+    updateBadges();
+}
 
-        document
-            .getElementById("badge2")
-            .classList.add("unlocked");
 
+/* =========================
+   BADGES
+========================= */
+
+function updateBadges() {
+
+    const badge1 =
+        document.getElementById("badge1");
+
+    const badge2 =
+        document.getElementById("badge2");
+
+    const badge3 =
+        document.getElementById("badge3");
+
+    const cooked =
+        cookedRecipes.length;
+
+
+    if (badge1) {
+
+        badge1.classList.toggle(
+            "unlocked",
+            cooked >= 1
+        );
     }
 
+    if (badge2) {
 
-    // Badge 3
-    if (cookedCount >= 6) {
+        badge2.classList.toggle(
+            "unlocked",
+            cooked >= 3
+        );
+    }
 
-        document
-            .getElementById("badge3")
-            .classList.add("unlocked");
+    if (badge3) {
 
+        badge3.classList.toggle(
+            "unlocked",
+            cooked >= 6
+        );
     }
 }
 
 
 /* =========================
-   RANDOM RECIPE
+   OPEN MY KITCHEN
 ========================= */
 
-function pickRandomRecipe() {
+function openKitchen() {
 
-    let availableRecipes = [...recipes];
-
-
-    if (currentFilter !== "all" &&
-        currentFilter !== "saved") {
-
-        availableRecipes =
-            availableRecipes.filter(recipe =>
-                recipe.tags.includes(currentFilter)
-            );
+    if (!kitchenPanel) {
+        return;
     }
 
+    renderKitchenList();
 
-    if (currentFilter === "saved") {
+    kitchenPanel.classList.add("open");
 
-        availableRecipes =
-            availableRecipes.filter(recipe =>
-                savedRecipes.includes(recipe.id)
-            );
+    kitchenPanel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+/* =========================
+   CLOSE MY KITCHEN
+========================= */
+
+function closeKitchenPanel() {
+
+    if (!kitchenPanel) {
+        return;
     }
 
+    kitchenPanel.classList.remove("open");
 
-    if (availableRecipes.length === 0) {
+    kitchenPanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
 
-        showToast("No recipes in this category");
+    document.body.style.overflow = "";
+}
+
+
+/* =========================
+   KITCHEN TABS
+========================= */
+
+function setKitchenTab(tab) {
+
+    currentKitchenTab =
+        tab;
+
+    kitchenTabs.forEach(
+        button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.kitchenTab === tab
+            );
+        }
+    );
+
+    renderKitchenList();
+}
+
+
+/* =========================
+   RENDER KITCHEN LIST
+========================= */
+
+function renderKitchenList() {
+
+    if (!kitchenList) {
+        return;
+    }
+
+    const ids =
+        currentKitchenTab === "saved"
+            ? savedRecipes
+            : cookedRecipes;
+
+
+    if (ids.length === 0) {
+
+        if (
+            currentKitchenTab === "saved"
+        ) {
+
+            kitchenList.innerHTML = `
+                <div class="kitchen-empty">
+                    <span>♡</span>
+                    <p>Your saved dishes will appear here.</p>
+                </div>
+            `;
+
+        } else {
+
+            kitchenList.innerHTML = `
+                <div class="kitchen-empty">
+                    <span>🍳</span>
+                    <p>Dishes you cook will appear here.</p>
+                </div>
+            `;
+        }
 
         return;
     }
 
 
-    const randomIndex =
-        Math.floor(
-            Math.random() * availableRecipes.length
+    const kitchenRecipes =
+        ids
+            .map(findRecipe)
+            .filter(Boolean);
+
+
+    kitchenList.innerHTML =
+        kitchenRecipes
+            .map(recipe => `
+                <button
+                    class="kitchen-item"
+                    type="button"
+                    data-kitchen-recipe="${recipe.id}"
+                >
+                    <span class="kitchen-item-info">
+
+                        <span class="kitchen-item-title">
+                            ${recipe.emoji} ${recipe.title}
+                        </span>
+
+                        <span class="kitchen-item-meta">
+                            ${recipe.time} min · ${recipe.difficulty}
+                        </span>
+
+                    </span>
+
+                    <span class="kitchen-item-arrow">
+                        ↗
+                    </span>
+                </button>
+            `)
+            .join("");
+
+
+    const items =
+        kitchenList.querySelectorAll(
+            ".kitchen-item"
         );
 
 
+    items.forEach(item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                const recipeId =
+                    item.dataset.kitchenRecipe;
+
+                const recipe =
+                    findRecipe(recipeId);
+
+                if (!recipe) {
+                    return;
+                }
+
+                closeKitchenPanel();
+
+                openRecipe(recipe);
+            }
+        );
+    });
+}
+
+
+/* =========================
+   RANDOM CHEF'S CHOICE
+========================= */
+
+function pickRandomRecipe() {
+
+    /*
+       Because pasta is now inside
+       the main recipes array, Chef's
+       Choice can pick ANY dish.
+    */
+
+    const randomIndex =
+        Math.floor(
+            Math.random() * recipes.length
+        );
+
     currentRecipe =
-        availableRecipes[randomIndex];
+        recipes[randomIndex];
 
 
-    decisionEmoji.textContent =
-        currentRecipe.emoji;
+    if (decisionEmoji) {
 
-    decisionTitle.textContent =
-        currentRecipe.title;
+        decisionEmoji.textContent =
+            currentRecipe.emoji;
+    }
 
-    decisionMeta.textContent =
-        `${currentRecipe.time} min · ${currentRecipe.difficulty}`;
+    if (decisionTitle) {
+
+        decisionTitle.textContent =
+            currentRecipe.title;
+    }
+
+    if (decisionMeta) {
+
+        decisionMeta.textContent =
+            `${currentRecipe.time} min · ${currentRecipe.difficulty}`;
+    }
 
 
-    decisionModal.classList.remove("hidden");
+    if (decisionModal) {
 
-    document.body.style.overflow = "hidden";
+        decisionModal.classList.remove(
+            "hidden"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+    }
 }
 
 
@@ -714,10 +1142,13 @@ function pickRandomRecipe() {
 
 function closeDecision() {
 
+    if (!decisionModal) {
+        return;
+    }
+
     decisionModal.classList.add("hidden");
 
     document.body.style.overflow = "";
-
 }
 
 
@@ -729,13 +1160,16 @@ let toastTimer;
 
 function showToast(message) {
 
-    toast.textContent = message;
+    if (!toast) {
+        return;
+    }
+
+    toast.textContent =
+        message;
 
     toast.classList.add("show");
 
-
     clearTimeout(toastTimer);
-
 
     toastTimer =
         setTimeout(() => {
@@ -747,98 +1181,61 @@ function showToast(message) {
 
 
 /* =========================
-   MOOD FILTERS
-========================= */
-
-const moodButtons =
-    document.querySelectorAll(".mood-card");
-
-
-moodButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const filter =
-            button.dataset.filter;
-
-
-        if (currentFilter === filter) {
-
-            currentFilter = "all";
-
-            button.classList.remove("active");
-
-        } else {
-
-            currentFilter = filter;
-
-            moodButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
-
-            button.classList.add("active");
-
-        }
-
-
-        displayRecipes();
-
-    });
-
-});
-
-
-/* =========================
-   SEARCH
-========================= */
-
-searchInput.addEventListener("input", event => {
-
-    currentSearch =
-        event.target.value;
-
-    displayRecipes();
-
-});
-
-
-/* =========================
    SURPRISE BUTTON
 ========================= */
 
-surpriseBtn.addEventListener(
-    "click",
-    pickRandomRecipe
-);
+if (surpriseBtn) {
+
+    surpriseBtn.addEventListener(
+        "click",
+        pickRandomRecipe
+    );
+}
 
 
 /* =========================
-   SAVED BUTTON
+   MY KITCHEN EVENTS
 ========================= */
 
-savedBtn.addEventListener("click", () => {
+if (kitchenTrigger) {
 
-    currentFilter = "saved";
-
-    currentSearch = "";
-
-    searchInput.value = "";
-
-
-    moodButtons.forEach(btn =>
-        btn.classList.remove("active")
+    kitchenTrigger.addEventListener(
+        "click",
+        openKitchen
     );
+}
 
 
-    displayRecipes();
+if (closeKitchen) {
+
+    closeKitchen.addEventListener(
+        "click",
+        closeKitchenPanel
+    );
+}
 
 
-    document
-        .getElementById("recipes")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+if (kitchenPanelOverlay) {
 
+    kitchenPanelOverlay.addEventListener(
+        "click",
+        closeKitchenPanel
+    );
+}
+
+
+kitchenTabs.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            setKitchenTab(
+                button.dataset.kitchenTab
+            );
+
+        }
+    );
 });
 
 
@@ -846,79 +1243,304 @@ savedBtn.addEventListener("click", () => {
    RECIPE MODAL EVENTS
 ========================= */
 
-closeRecipeModal.addEventListener(
-    "click",
-    closeRecipe
-);
+if (closeRecipeModal) {
+
+    closeRecipeModal.addEventListener(
+        "click",
+        closeRecipe
+    );
+}
 
 
-saveRecipeBtn.addEventListener(
-    "click",
-    saveRecipe
-);
+if (saveRecipeBtn) {
+
+    saveRecipeBtn.addEventListener(
+        "click",
+        saveRecipe
+    );
+}
 
 
-cookedBtn.addEventListener("click", () => {
+if (cookedBtn) {
 
-    markCooked(currentRecipe);
+    cookedBtn.addEventListener(
+        "click",
+        () => {
 
-});
+            markCooked(
+                currentRecipe
+            );
+
+        }
+    );
+}
+
+
+/* =========================
+   RECIPE MODAL OVERLAY
+========================= */
+
+if (recipeModal) {
+
+    const recipeOverlay =
+        recipeModal.querySelector(
+            ".modal-overlay"
+        );
+
+    if (recipeOverlay) {
+
+        recipeOverlay.addEventListener(
+            "click",
+            closeRecipe
+        );
+    }
+}
 
 
 /* =========================
    DECISION MODAL EVENTS
 ========================= */
 
-closeDecisionModal.addEventListener(
-    "click",
-    closeDecision
-);
+if (closeDecisionModal) {
+
+    closeDecisionModal.addEventListener(
+        "click",
+        closeDecision
+    );
+}
 
 
-tryAgainBtn.addEventListener(
-    "click",
-    pickRandomRecipe
-);
+if (tryAgainBtn) {
+
+    tryAgainBtn.addEventListener(
+        "click",
+        pickRandomRecipe
+    );
+}
 
 
-cookDecisionBtn.addEventListener(
-    "click",
-    () => {
+if (cookDecisionBtn) {
 
-        closeDecision();
+    cookDecisionBtn.addEventListener(
+        "click",
+        () => {
 
-        openRecipe(currentRecipe);
+            closeDecision();
 
+            openRecipe(
+                currentRecipe
+            );
+
+        }
+    );
+}
+
+
+/* =========================
+   DECISION MODAL OVERLAY
+========================= */
+
+if (decisionModal) {
+
+    const decisionOverlay =
+        decisionModal.querySelector(
+            ".decision-overlay"
+        );
+
+    if (decisionOverlay) {
+
+        decisionOverlay.addEventListener(
+            "click",
+            closeDecision
+        );
     }
-);
+}
 
 
 /* =========================
-   CLICK OUTSIDE MODALS
+   PASTA VIDEO MODAL
 ========================= */
 
-recipeModal
-    .querySelector(".modal-overlay")
-    .addEventListener("click", closeRecipe);
+function openPastaVideo(
+    videoSource,
+    title
+) {
+
+    if (
+        !pastaVideoModal ||
+        !pastaModalVideo
+    ) {
+        return;
+    }
 
 
-decisionModal
-    .querySelector(".decision-overlay")
-    .addEventListener("click", closeDecision);
+    if (pastaModalTitle) {
+
+        pastaModalTitle.textContent =
+            title;
+    }
+
+
+    pastaModalVideo.src =
+        videoSource;
+
+
+    pastaVideoModal.classList.remove(
+        "hidden"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    pastaModalVideo
+        .play()
+        .catch(() => {});
+}
 
 
 /* =========================
-   ESCAPE KEY
+   CLOSE PASTA VIDEO
 ========================= */
 
-document.addEventListener("keydown", event => {
+function closePastaVideo() {
 
-    if (event.key === "Escape") {
+    if (
+        !pastaVideoModal ||
+        !pastaModalVideo
+    ) {
+        return;
+    }
 
-        closeRecipe();
 
-        closeDecision();
+    pastaModalVideo.pause();
 
+    pastaModalVideo.currentTime = 0;
+
+    pastaModalVideo.removeAttribute(
+        "src"
+    );
+
+    pastaModalVideo.load();
+
+
+    pastaVideoModal.classList.add(
+        "hidden"
+    );
+
+
+    document.body.style.overflow = "";
+}
+
+
+/* =========================
+   PASTA VIDEO CARDS
+========================= */
+
+const pastaCards =
+    document.querySelectorAll(
+        ".pasta-card"
+    );
+
+
+pastaCards.forEach(card => {
+
+    const video =
+        card.querySelector("video");
+
+    const playButton =
+        card.querySelector(".play-icon");
+
+    const watchButton =
+        card.querySelector(".pasta-view-btn");
+
+
+    /* Preview video on hover */
+
+    if (video) {
+
+        card.addEventListener(
+            "mouseenter",
+            () => {
+
+                video.play()
+                    .catch(() => {});
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                video.pause();
+
+                video.currentTime = 0;
+
+            }
+        );
+    }
+
+
+    /* Play icon */
+
+    if (playButton) {
+
+        playButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                if (!video) {
+                    return;
+                }
+
+
+                const videoSource =
+                    video.getAttribute("src");
+
+                const title =
+                    watchButton
+                        ? watchButton.dataset.title
+                        : "Pasta";
+
+
+                openPastaVideo(
+                    videoSource,
+                    title
+                );
+            }
+        );
+    }
+
+
+    /* Watch button */
+
+    if (watchButton) {
+
+        watchButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+
+                const videoSource =
+                    watchButton.dataset.video;
+
+                const title =
+                    watchButton.dataset.title;
+
+
+                openPastaVideo(
+                    videoSource,
+                    title
+                );
+            }
+        );
     }
 
 });
@@ -929,48 +1551,176 @@ document.addEventListener("keydown", event => {
 ========================= */
 
 const navButtons =
-    document.querySelectorAll(".nav-btn");
+    document.querySelectorAll(
+        ".nav-btn"
+    );
 
 
 navButtons.forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        const section =
-            button.dataset.section;
-
-
-        navButtons.forEach(btn =>
-            btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
+            const section =
+                button.dataset.section;
 
 
-        if (section === "recipes") {
+            navButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
 
-            document
-                .getElementById("recipes")
-                .scrollIntoView({
+            button.classList.add("active");
+
+
+            const target =
+                document.getElementById(section);
+
+
+            if (target) {
+
+                target.scrollIntoView({
                     behavior: "smooth"
                 });
+            }
 
         }
-
-
-        if (section === "kitchen") {
-
-            document
-                .getElementById("kitchen")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-
-    });
+    );
 
 });
+
+
+/* =========================
+   CHEF'S SELECTION
+========================= */
+
+function setupChefSelection() {
+
+    const selectionCards =
+        document.querySelectorAll(
+            ".selection-card"
+        );
+
+
+    selectionCards.forEach(
+        (card, index) => {
+
+            const selection =
+                chefSelection[index];
+
+            if (!selection) {
+                return;
+            }
+
+
+            const recipe =
+                findRecipe(selection.id);
+
+            if (!recipe) {
+                return;
+            }
+
+
+            /*
+               Update the existing card
+               so the homepage selection
+               actually represents the
+               recipe collection.
+            */
+
+            card.dataset.recipe =
+                recipe.id;
+
+
+            const label =
+                card.querySelector(
+                    ".selection-card-content p"
+                );
+
+            const title =
+                card.querySelector(
+                    ".selection-card-content h3"
+                );
+
+            const meta =
+                card.querySelector(
+                    ".selection-card-content span"
+                );
+
+
+            if (label) {
+
+                label.textContent =
+                    selection.label;
+            }
+
+
+            if (title) {
+
+                title.textContent =
+                    recipe.title;
+            }
+
+
+            if (meta) {
+
+                meta.textContent =
+                    `${recipe.time} min · ${recipe.difficulty}`;
+            }
+        }
+    );
+
+
+    selectionCards.forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                const recipeId =
+                    card.dataset.recipe;
+
+                const recipe =
+                    findRecipe(recipeId);
+
+
+                if (recipe) {
+
+                    openRecipe(recipe);
+                }
+            }
+        );
+
+    });
+}
+
+
+setupChefSelection();
+
+
+/* =========================
+   ESCAPE KEY
+========================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
+        closeKitchenPanel();
+
+        closeRecipe();
+
+        closeDecision();
+
+        closePastaVideo();
+
+    }
+);
 
 
 /* =========================
@@ -981,4 +1731,4 @@ updateSavedCount();
 
 updateKitchen();
 
-displayRecipes();
+renderKitchenList();
