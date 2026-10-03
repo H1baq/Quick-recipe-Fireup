@@ -395,6 +395,12 @@ let cookedRecipes =
 const surpriseBtn =
     document.getElementById("surpriseBtn");
 
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const mainNavigation =
+    document.getElementById("mainNavigation");
+
 const savedCount =
     document.getElementById("savedCount");
 
@@ -1434,6 +1440,32 @@ function closePastaVideo() {
 }
 
 
+if (closePastaVideoModal) {
+
+    closePastaVideoModal.addEventListener(
+        "click",
+        closePastaVideo
+    );
+}
+
+
+if (pastaVideoModal) {
+
+    const pastaVideoOverlay =
+        pastaVideoModal.querySelector(
+            ".modal-overlay"
+        );
+
+    if (pastaVideoOverlay) {
+
+        pastaVideoOverlay.addEventListener(
+            "click",
+            closePastaVideo
+        );
+    }
+}
+
+
 /* =========================
    PASTA VIDEO CARDS
 ========================= */
@@ -1572,6 +1604,8 @@ navButtons.forEach(button => {
 
             button.classList.add("active");
 
+            closeNavigationMenu();
+
 
             const target =
                 document.getElementById(section);
@@ -1588,6 +1622,43 @@ navButtons.forEach(button => {
     );
 
 });
+
+
+function closeNavigationMenu() {
+
+    if (!menuToggle || !mainNavigation) {
+        return;
+    }
+
+    mainNavigation.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+}
+
+
+if (menuToggle && mainNavigation) {
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                mainNavigation.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            );
+        }
+    );
+}
 
 
 /* =========================
@@ -1718,6 +1789,8 @@ document.addEventListener(
         closeDecision();
 
         closePastaVideo();
+
+        closeNavigationMenu();
 
     }
 );

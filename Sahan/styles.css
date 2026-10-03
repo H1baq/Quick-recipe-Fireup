@@ -190,6 +190,39 @@ section {
     width: 18px;
 }
 
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--cream);
+}
+
+.menu-toggle span {
+    width: 17px;
+    height: 1px;
+    background: currentColor;
+    transition: transform 0.25s ease;
+}
+
+.menu-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 /* =========================
    MY KITCHEN TRIGGER
 ========================= */
@@ -252,17 +285,19 @@ section {
 ========================= */
 
 .hero {
-    min-height: calc(100vh - 76px);
+    min-height: min(calc(100svh - 76px), 820px);
 
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(270px, 0.72fr);
     align-items: center;
     justify-content: center;
+    gap: clamp(30px, 7vw, 100px);
 
     position: relative;
 
-    padding: 80px 20px;
+    padding: 70px 10%;
 
-    text-align: center;
+    text-align: left;
     overflow: hidden;
 
     background:
@@ -312,6 +347,7 @@ section {
     position: relative;
     z-index: 2;
 
+    grid-column: 1 / -1;
     width: min(760px, 100%);
 }
 
@@ -322,14 +358,39 @@ section {
 .hero h1 {
     font-family: "Fraunces", serif;
 
-    font-size: clamp(4rem, 9vw, 8rem);
+    font-size: clamp(3.6rem, 6.5vw, 6.6rem);
     font-weight: 400;
     line-height: 0.9;
-    letter-spacing: -3px;
+    letter-spacing: 0;
 
     color: var(--cream);
 
     margin-bottom: 30px;
+}
+
+.hero-art {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(23, 19, 16, 0.92) 0%, rgba(23, 19, 16, 0.72) 42%, rgba(23, 19, 16, 0.35) 100%),
+        linear-gradient(0deg, rgba(23, 19, 16, 0.5), transparent 58%);
+}
+
+.hero-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
 }
 
 .hero-description {
@@ -590,11 +651,30 @@ section {
     width: min(1180px, 100%);
     margin: 0 auto 45px;
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 16px 35px;
+}
 
-    gap: 30px;
+.pasta-heading > div {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.pasta-poster {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    justify-self: center;
+    display: block;
+    width: min(100%, 300px);
+    aspect-ratio: 0.72;
+    object-fit: cover;
+    border: 5px solid #f6f0de;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    transform: rotate(-2deg);
 }
 
 .section-heading h2 {
@@ -606,6 +686,9 @@ section {
 }
 
 .video-count {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
     color: var(--gold);
 
     font-size: 0.6rem;
@@ -918,7 +1001,10 @@ section {
 
     gap: 14px;
 
-    padding: 24px 0;
+    margin: 20px 0;
+    padding: 17px 14px;
+    background: linear-gradient(120deg, rgba(155, 87, 68, 0.2), rgba(127, 137, 116, 0.1));
+    border: 1px solid rgba(201, 170, 114, 0.16);
 }
 
 .kitchen-avatar {
@@ -933,9 +1019,9 @@ section {
 
     border-radius: 50%;
 
-    background: var(--gold);
+    background: var(--terracotta);
 
-    color: var(--bg);
+    color: var(--cream);
 
     font-family: "Fraunces", serif;
     font-size: 1.2rem;
@@ -998,6 +1084,14 @@ section {
 
     font-size: 1.7rem;
     font-weight: 400;
+}
+
+.kitchen-stat:nth-child(2) strong {
+    color: #b9c89d;
+}
+
+.kitchen-stat:nth-child(3) strong {
+    color: #e5a18d;
 }
 
 /* =========================
@@ -1645,24 +1739,40 @@ section {
     .navbar {
         padding: 0 4%;
         min-height: 70px;
+        gap: 12px;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .kitchen-trigger {
+        margin-left: auto;
     }
 
     .main-nav {
-        overflow-x: auto;
-
-        justify-content: flex-start;
-
-        scrollbar-width: none;
-
-        white-space: nowrap;
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 4%;
+        right: 4%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px;
+        background: var(--bg-soft);
+        border: 1px solid var(--line);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
     }
 
-    .main-nav::-webkit-scrollbar {
-        display: none;
+    .main-nav.open {
+        display: flex;
     }
 
     .nav-btn {
-        flex-shrink: 0;
+        width: 100%;
+        padding: 13px 12px;
+        text-align: left;
     }
 
     .selection-section {
@@ -1686,8 +1796,8 @@ section {
     }
 
     .pasta-heading {
-        align-items: flex-start;
-        flex-direction: column;
+        grid-template-columns: minmax(0, 1fr) minmax(150px, 40vw);
+        gap: 12px 20px;
     }
 
     .recipe-details {
@@ -1706,10 +1816,6 @@ section {
         font-size: 1.2rem;
     }
 
-    .main-nav {
-        display: none;
-    }
-
     .kitchen-trigger-label {
         display: none;
     }
@@ -1719,8 +1825,11 @@ section {
     }
 
     .hero {
-        min-height: 650px;
-        padding: 80px 20px;
+        min-height: calc(100svh - 70px);
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 56px 20px 72px;
+        text-align: center;
     }
 
     .hero::before {
@@ -1728,8 +1837,8 @@ section {
     }
 
     .hero h1 {
-        font-size: clamp(3.4rem, 16vw, 5rem);
-        letter-spacing: -2px;
+        font-size: clamp(3rem, 13vw, 4.3rem);
+        letter-spacing: 0;
     }
 
     .hero-description {
