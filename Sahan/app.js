@@ -261,7 +261,7 @@ const todaysPick = weekMenu[today] || null;
 /* TESTING: every day opens, and reveals aren't remembered.
    Set to false before going live. */
 
-const unlockAllDays = false;
+const unlockAllDays = true;
 
 
 /* The day currently open in the reveal modal */
