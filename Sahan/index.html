@@ -19,7 +19,7 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.googleapis.com"
+        href="https://fonts.gstatic.com"
         crossorigin
     >
 
@@ -38,90 +38,6 @@
 
 
 <body>
-
-
-    <!-- =========================
-         TOP NAVIGATION
-    ========================== -->
-
-    <header class="navbar">
-
-        <a
-            href="#home"
-            class="logo"
-        >
-            SAHAN<span>.</span>
-        </a>
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-controls="mainNavigation"
-            aria-expanded="false"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="main-nav" id="mainNavigation" aria-label="Main navigation">
-
-            <button
-                class="nav-btn active"
-                data-section="home"
-            >
-                Home
-            </button>
-
-
-            <button
-                class="nav-btn"
-                data-section="pasta"
-            >
-                Pasta
-            </button>
-
-
-            <button
-                class="nav-btn"
-                data-section="selection"
-            >
-                Hibaq's Picks
-            </button>
-
-        </nav>
-
-
-        <!-- MY KITCHEN -->
-
-        <button
-            class="kitchen-trigger"
-            id="kitchenTrigger"
-            type="button"
-            aria-label="Open My Kitchen"
-        >
-
-            <span class="kitchen-trigger-icon">
-                ♡
-            </span>
-
-            <span class="kitchen-trigger-label">
-                My Kitchen
-            </span>
-
-            <span
-                class="kitchen-trigger-count"
-                id="savedCount"
-            >
-                0
-            </span>
-
-        </button>
-
-    </header>
-
 
 
     <!-- =========================
@@ -163,7 +79,7 @@
 
                 <button
                     class="decision-btn"
-                    id="surpriseBtn"
+                    id="dayPickBtn"
                     type="button"
                 >
 
@@ -171,9 +87,20 @@
                         ✦
                     </span>
 
-                        Hibaq, pick for me!
+                        Hibaq's Pick for the day
 
                 </button>
+
+
+                <!-- MONDAY - FRIDAY -->
+
+                <ol
+                    class="week-strip"
+                    id="weekStrip"
+                    aria-label="This week's picks"
+                >
+                    <!-- JavaScript will populate this -->
+                </ol>
 
             </div>
 
@@ -227,975 +154,32 @@
 
         </section>
 
-
-
-       <!-- =========================
-     CHEF'S SELECTION
-========================== -->
-
-<section
-    class="selection-section"
-    id="selection"
->
-
-    <div class="selection-header">
-
-        <div>
-
-            <p class="eyebrow">
-                A LITTLE MENU MAGIC
-            </p>
-
-            <h2>
-                Hibaq's picks for today
-            </h2>
-
-        </div>
-
-
-        <p>
-            A few kitchen favourites.
-            <br>
-            One might be your new love.
-        </p>
-
-    </div>
-
-
-    <div class="selection-grid">
-
-
-        <!-- CHICKEN SUQAAR -->
-
-        <article
-            class="selection-card featured-selection"
-            data-recipe="chicken-suqaar"
-        >
-
-            <div class="selection-number">
-                01
-            </div>
-
-
-            <div class="selection-card-content">
-
-                <p>
-                    HOUSE SPECIAL
-                </p>
-
-
-                <h3>
-                    Chicken Suqaar
-                </h3>
-
-
-                <span>
-                    30 min · Easy
-                </span>
-
-            </div>
-
-
-            <span class="selection-arrow">
-                ↗
-            </span>
-
-        </article>
-
-
-
-        <!-- CREAMY CHICKEN PASTA -->
-
-        <article
-            class="selection-card"
-            data-recipe="creamy-chicken-pasta"
-        >
-
-            <div class="selection-number">
-                02
-            </div>
-
-
-            <div class="selection-card-content">
-
-                <p>
-                    PASTA ROOM
-                </p>
-
-
-                <h3>
-                    Creamy Chicken Pasta
-                </h3>
-
-
-                <span>
-                    30 min · Easy
-                </span>
-
-            </div>
-
-
-            <span class="selection-arrow">
-                ↗
-            </span>
-
-        </article>
-
-
-
-        <!-- CHILLI CRISP FETTUCCINE -->
-
-        <article
-            class="selection-card"
-            data-recipe="chilli-crisp-fettuccine"
-        >
-
-            <div class="selection-number">
-                03
-            </div>
-
-
-            <div class="selection-card-content">
-
-                <p>
-                    CHEF'S FAVOURITE
-                </p>
-
-
-                <h3>
-                    Chilli Crisp Fettuccine Alfredo
-                </h3>
-
-
-                <span>
-                    25 min · Easy
-                </span>
-
-            </div>
-
-
-            <span class="selection-arrow">
-                ↗
-            </span>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-        <!-- =========================
-             PASTA ROOM
-        ========================== -->
-
-        <section
-            class="pasta-section"
-            id="pasta"
-        >
-
-            <div class="section-heading pasta-heading">
-
-                <div>
-
-                    <p class="eyebrow">
-                        02 · THE PASTA ROOM
-                    </p>
-
-
-                    <h2>
-                        Pasta, served differently.
-                    </h2>
-
-                </div>
-
-                <img
-                    class="pasta-poster"
-                    src="pasta.jpeg"
-                    alt="Hand-painted pasta poster with a plate of spaghetti"
-                >
-
-                <span class="video-count">
-                    05 SIGNATURE DISHES
-                </span>
-
-            </div>
-
-
-            <div class="pasta-grid">
-
-
-                <!-- PASTA 1 -->
-
-                <article class="pasta-card">
-
-                    <div class="pasta-video">
-
-                        <video
-                            src="pasta1.mp4"
-                            muted
-                            loop
-                            playsinline
-                            preload="metadata"
-                        ></video>
-
-
-                        <button
-                            class="play-icon"
-                            type="button"
-                            aria-label="Play Creamy Chicken Pasta"
-                        >
-                            ▶
-                        </button>
-
-                    </div>
-
-
-                    <div class="pasta-info">
-
-                        <div class="pasta-top">
-
-                            <span class="pasta-number">
-                                01
-                            </span>
-
-
-                            <span class="pasta-label">
-                                SIGNATURE
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Creamy Chicken Pasta
-                        </h3>
-
-
-                        <button
-                            class="pasta-view-btn"
-                            type="button"
-                            data-video="pasta1.mp4"
-                            data-title="Creamy Chicken Pasta"
-                        >
-                            View dish →
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PASTA 2 -->
-
-                <article class="pasta-card">
-
-                    <div class="pasta-video">
-
-                        <video
-                            src="pasta2.mp4"
-                            muted
-                            loop
-                            playsinline
-                            preload="metadata"
-                        ></video>
-
-
-                        <button
-                            class="play-icon"
-                            type="button"
-                            aria-label="Play Spicy Tomato Pasta"
-                        >
-                            ▶
-                        </button>
-
-                    </div>
-
-
-                    <div class="pasta-info">
-
-                        <div class="pasta-top">
-
-                            <span class="pasta-number">
-                                02
-                            </span>
-
-
-                            <span class="pasta-label">
-                                SIGNATURE
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Spicy Tomato Pasta
-                        </h3>
-
-
-                        <button
-                            class="pasta-view-btn"
-                            type="button"
-                            data-video="pasta2.mp4"
-                            data-title="Spicy Tomato Pasta"
-                        >
-                            View dish →
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PASTA 3 -->
-
-                <article class="pasta-card">
-
-                    <div class="pasta-video">
-
-                        <video
-                            src="pasta3.mp4"
-                            muted
-                            loop
-                            playsinline
-                            preload="metadata"
-                        ></video>
-
-
-                        <button
-                            class="play-icon"
-                            type="button"
-                            aria-label="Play Chilli Crisp Fettuccine Alfredo"
-                        >
-                            ▶
-                        </button>
-
-                    </div>
-
-
-                    <div class="pasta-info">
-
-                        <div class="pasta-top">
-
-                            <span class="pasta-number">
-                                03
-                            </span>
-
-
-                            <span class="pasta-label">
-                                SIGNATURE
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Chilli Crisp Fettuccine Alfredo
-                        </h3>
-
-
-                        <button
-                            class="pasta-view-btn"
-                            type="button"
-                            data-video="pasta3.mp4"
-                            data-title="Chilli Crisp Fettuccine Alfredo"
-                        >
-                            View dish →
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PASTA 4 -->
-
-                <article class="pasta-card">
-
-                    <div class="pasta-video">
-
-                        <video
-                            src="pasta4.mp4"
-                            muted
-                            loop
-                            playsinline
-                            preload="metadata"
-                        ></video>
-
-
-                        <button
-                            class="play-icon"
-                            type="button"
-                            aria-label="Play Creamy Tomato and Garlic Pasta"
-                        >
-                            ▶
-                        </button>
-
-                    </div>
-
-
-                    <div class="pasta-info">
-
-                        <div class="pasta-top">
-
-                            <span class="pasta-number">
-                                04
-                            </span>
-
-
-                            <span class="pasta-label">
-                                SIGNATURE
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Creamy Tomato & Garlic Pasta
-                        </h3>
-
-
-                        <button
-                            class="pasta-view-btn"
-                            type="button"
-                            data-video="pasta4.mp4"
-                            data-title="Creamy Tomato and Garlic Pasta"
-                        >
-                            View dish →
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- PASTA 5 -->
-
-                <article class="pasta-card">
-
-                    <div class="pasta-video">
-
-                        <video
-                            src="pasta5.mp4"
-                            muted
-                            loop
-                            playsinline
-                            preload="metadata"
-                        ></video>
-
-
-                        <button
-                            class="play-icon"
-                            type="button"
-                            aria-label="Play Caramelized Onion Pasta"
-                        >
-                            ▶
-                        </button>
-
-                    </div>
-
-
-                    <div class="pasta-info">
-
-                        <div class="pasta-top">
-
-                            <span class="pasta-number">
-                                05
-                            </span>
-
-
-                            <span class="pasta-label">
-                                SIGNATURE
-                            </span>
-
-                        </div>
-
-
-                        <h3>
-                            Caramelized Onion Pasta
-                        </h3>
-
-
-                        <button
-                            class="pasta-view-btn"
-                            type="button"
-                            data-video="pasta5.mp4"
-                            data-title="Caramelized Onion Pasta"
-                        >
-                            View dish →
-                        </button>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-        </section>
-
     </main>
 
 
 
     <!-- =========================
-         MY KITCHEN DASHBOARD
-         Hidden until triggered
-    ========================== -->
-
-    <aside
-        class="kitchen-panel"
-        id="kitchenPanel"
-        aria-hidden="true"
-    >
-
-        <div class="kitchen-panel-overlay"></div>
-
-
-        <div class="kitchen-dashboard">
-
-
-            <!-- DASHBOARD HEADER -->
-
-            <div class="kitchen-dashboard-header">
-
-                <div>
-
-                    <p class="eyebrow">
-                        THE GOOD STUFF
-                    </p>
-
-
-                    <h2>
-                        My Kitchen
-                    </h2>
-
-                </div>
-
-
-                <button
-                    class="close-btn"
-                    id="closeKitchen"
-                    type="button"
-                    aria-label="Close My Kitchen"
-                >
-                    ×
-                </button>
-
-            </div>
-
-
-
-            <!-- PERSONAL INTRO -->
-
-            <div class="kitchen-welcome">
-
-                <span class="kitchen-avatar">
-                    H
-                </span>
-
-
-                <div>
-
-                    <p>
-                        Hey Hibaq, ready to make something lovely?
-                    </p>
-
-
-                    <span>
-                        Saved recipes, little wins, and kitchen adventures.
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- STATS -->
-
-            <div class="kitchen-stats">
-
-                <div class="kitchen-stat">
-
-                    <span>
-                        Points
-                    </span>
-
-
-                    <strong id="pointsValue">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div class="kitchen-stat">
-
-                    <span>
-                        Cooked
-                    </span>
-
-
-                    <strong id="cookedCount">
-                        0
-                    </strong>
-
-                </div>
-
-
-                <div class="kitchen-stat">
-
-                    <span>
-                        Saved
-                    </span>
-
-
-                    <strong id="dashboardSavedCount">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- PROGRESS -->
-
-            <div class="kitchen-progress">
-
-                <div class="progress-label">
-
-                    <span>
-                        Your recipe adventure
-                    </span>
-
-
-                    <span id="progressText">
-                        0 / 6
-                    </span>
-
-                </div>
-
-
-                <div class="progress-bar">
-
-                    <div
-                        class="progress-fill"
-                        id="progressFill"
-                    ></div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SAVED / COOKED TABS -->
-
-            <div class="kitchen-tabs">
-
-                <button
-                    class="kitchen-tab active"
-                    type="button"
-                    data-kitchen-tab="saved"
-                >
-                    Saved
-                </button>
-
-
-                <button
-                    class="kitchen-tab"
-                    type="button"
-                    data-kitchen-tab="cooked"
-                >
-                    Cooked
-                </button>
-
-            </div>
-
-
-
-            <!-- DASHBOARD CONTENT -->
-
-            <div
-                class="kitchen-list"
-                id="kitchenList"
-            >
-
-                <!-- JavaScript will populate this -->
-
-            </div>
-
-
-
-            <!-- BADGES -->
-
-            <div class="kitchen-badges">
-
-                <p class="eyebrow">
-                    YOUR MILESTONES
-                </p>
-
-
-                <div class="badges">
-
-                    <div
-                        class="badge"
-                        id="badge1"
-                    >
-
-                        <span>
-                            🍳
-                        </span>
-
-
-                        <small>
-                            First cook
-                        </small>
-
-                    </div>
-
-
-                    <div
-                        class="badge"
-                        id="badge2"
-                    >
-
-                        <span>
-                            🔥
-                        </span>
-
-
-                        <small>
-                            On a roll
-                        </small>
-
-                    </div>
-
-
-                    <div
-                        class="badge"
-                        id="badge3"
-                    >
-
-                        <span>
-                            👨🏾‍🍳
-                        </span>
-
-
-                        <small>
-                            Chef mode
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </aside>
-
-
-
-    <!-- =========================
-         RECIPE MODAL
+         DAILY REVEAL
+         Teaser clip + the day's activity,
+         then the recipe once it's won
     ========================== -->
 
     <div
         class="modal hidden"
-        id="recipeModal"
+        id="revealModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="revealTitle"
     >
 
         <div class="modal-overlay"></div>
 
 
-        <div class="modal-content recipe-modal">
+        <div class="modal-content reveal-modal">
 
             <button
                 class="close-btn"
-                id="closeRecipeModal"
-                type="button"
-                aria-label="Close recipe"
-            >
-                ×
-            </button>
-
-
-            <div
-                class="modal-image"
-                id="modalImage"
-            >
-                🍗
-            </div>
-
-
-            <div class="modal-body">
-
-                <p
-                    class="eyebrow"
-                    id="modalCategory"
-                >
-                    CHICKEN
-                </p>
-
-
-                <h2 id="modalTitle">
-                    Chicken Suqaar
-                </h2>
-
-
-                <div class="modal-meta">
-
-                    <span id="modalTime">
-                        ⏱ 30 min
-                    </span>
-
-
-                    <span id="modalDifficulty">
-                        Easy
-                    </span>
-
-                </div>
-
-
-                <div class="recipe-details">
-
-                    <div>
-
-                        <h3>
-                            Ingredients
-                        </h3>
-
-
-                        <ul id="ingredientsList"></ul>
-
-                    </div>
-
-
-                    <div>
-
-                        <h3>
-                            Method
-                        </h3>
-
-
-                        <ol id="stepsList"></ol>
-
-                    </div>
-
-                </div>
-
-
-                <div class="recipe-actions">
-
-                    <button
-                        class="secondary-btn"
-                        id="saveRecipeBtn"
-                        type="button"
-                    >
-                        ♥ Save
-                    </button>
-
-
-                    <button
-                        class="primary-btn"
-                        id="cookedBtn"
-                        type="button"
-                    >
-                        I cooked this
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         PASTA VIDEO MODAL
-    ========================== -->
-
-    <div
-        class="modal hidden"
-        id="pastaVideoModal"
-    >
-
-        <div class="modal-overlay"></div>
-
-
-        <div class="modal-content pasta-video-modal">
-
-            <button
-                class="close-btn"
-                id="closePastaVideoModal"
-                type="button"
-                aria-label="Close video"
-            >
-                ×
-            </button>
-
-
-            <div class="pasta-modal-video">
-
-                <video
-                    id="pastaModalVideo"
-                    controls
-                    playsinline
-                ></video>
-
-            </div>
-
-
-            <div class="modal-body">
-
-                <p class="eyebrow">
-                    FROM THE PASTA ROOM
-                </p>
-
-
-                <h2 id="pastaModalTitle">
-                    Pasta
-                </h2>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         RANDOM CHEF'S CHOICE
-    ========================== -->
-
-    <div
-        class="decision-modal hidden"
-        id="decisionModal"
-    >
-
-        <div class="decision-overlay"></div>
-
-
-        <div class="decision-card">
-
-            <button
-                class="close-btn"
-                id="closeDecisionModal"
+                id="closeRevealModal"
                 type="button"
                 aria-label="Close"
             >
@@ -1203,47 +187,123 @@
             </button>
 
 
-            <span
-                class="decision-emoji"
-                id="decisionEmoji"
+            <!-- TEASER CLIP -->
+
+            <div
+                class="reveal-clip"
+                id="revealClip"
             >
-                🍗
-            </span>
+
+                <video
+                    id="revealVideo"
+                    muted
+                    loop
+                    playsinline
+                ></video>
 
 
-            <p class="eyebrow">
-                HIBAQ'S PICK OF THE DAY
-            </p>
-
-
-            <h2 id="decisionTitle">
-                Chicken Suqaar
-            </h2>
-
-
-            <p id="decisionMeta">
-                30 min · Easy
-            </p>
-
-
-            <div class="decision-actions">
-
-                <button
-                    class="secondary-btn"
-                    id="tryAgainBtn"
-                    type="button"
+                <span
+                    class="reveal-clip-mystery"
+                    aria-hidden="true"
                 >
-                    Another dish
-                </button>
+                    ?
+                </span>
 
 
-                <button
-                    class="primary-btn"
-                    id="cookDecisionBtn"
-                    type="button"
+                <span
+                    class="reveal-clip-tag"
+                    id="revealDay"
                 >
-                    Let's cook
-                </button>
+                    MONDAY
+                </span>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <p
+                    class="eyebrow"
+                    id="revealEyebrow"
+                >
+                    HIBAQ'S PICK FOR THE DAY
+                </p>
+
+
+                <h2 id="revealTitle">
+                    Today's dish is a secret…
+                </h2>
+
+
+                <p
+                    class="reveal-prompt"
+                    id="revealPrompt"
+                ></p>
+
+
+                <!-- ACTIVITY (quote, voice note or mini game) -->
+
+                <div
+                    class="activity"
+                    id="activity"
+                ></div>
+
+
+                <!-- THE RECIPE -->
+
+                <div
+                    class="recipe-reveal hidden"
+                    id="recipeReveal"
+                >
+
+                    <div class="modal-meta">
+
+                        <span id="revealTime">
+                            ⏱ 30 min
+                        </span>
+
+
+                        <span id="revealDifficulty">
+                            Easy
+                        </span>
+
+                    </div>
+
+
+                    <div class="recipe-details">
+
+                        <div>
+
+                            <h3>
+                                Ingredients
+                            </h3>
+
+
+                            <ul id="ingredientsList"></ul>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Method
+                            </h3>
+
+
+                            <ol id="stepsList"></ol>
+
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        class="reveal-signoff"
+                        id="revealSignoff"
+                    ></p>
+
+                </div>
 
             </div>
 
@@ -1260,9 +320,8 @@
     <div
         class="toast"
         id="toast"
-    >
-        Saved!
-    </div>
+        role="status"
+    ></div>
 
 
 
