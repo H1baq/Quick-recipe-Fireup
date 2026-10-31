@@ -743,6 +743,148 @@ section {
     font-size: 0.85rem;
 }
 
+.weekend-grocery-activity {
+    position: relative;
+    margin: 34px 0 0;
+    padding: 24px clamp(16px, 4vw, 28px) 20px;
+    background: #fff8f5;
+    border: 1px solid #ead9d7;
+    border-radius: 20px 20px 30px 30px;
+    color: #51484a;
+    animation: rise-in 0.5s ease both;
+}
+
+.weekend-grocery-activity::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -19px;
+    width: 54px;
+    height: 20px;
+    border: 1px solid #ead9d7;
+    border-bottom: 0;
+    border-radius: 30px 30px 0 0;
+    transform: translateX(-50%);
+}
+
+.grocery-sweet-note {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed #ead9d7;
+    color: #76666a;
+    font-family: "Fraunces", serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.35;
+}
+
+.grocery-list-heading h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #51484a;
+}
+
+.grocery-list-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 22px 0 12px;
+}
+
+.grocery-list-heading span {
+    color: #847679;
+    font-size: 0.7rem;
+    text-align: right;
+}
+
+.grocery-checklist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.grocery-check-item {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid #eadfdd;
+    border-radius: 999px;
+    color: #51484a;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.grocery-check-item input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.grocery-checkmark {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #cdaeb1;
+    border-radius: 50%;
+    color: #51484a;
+    font-size: 0.7rem;
+}
+
+.grocery-check-item.checked {
+    background: #f0e3e3;
+    border-color: #ddc9ca;
+    color: #887a7d;
+}
+
+.grocery-check-item.checked .grocery-checkmark {
+    background: #b9989d;
+    border-color: #b9989d;
+    color: white;
+}
+
+.grocery-check-item.checked .grocery-checkmark::after {
+    content: "✓";
+}
+
+.grocery-check-item.checked .grocery-ingredient {
+    text-decoration: line-through;
+}
+
+.grocery-ingredient {
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.grocery-check-item input:focus-visible + .grocery-checkmark {
+    outline: 2px solid #a88388;
+    outline-offset: 3px;
+}
+
+.grocery-reset {
+    margin-top: 12px;
+    padding: 6px 0;
+    background: transparent;
+    color: #847679;
+    font-size: 0.68rem;
+    text-decoration: underline;
+    text-decoration-color: var(--gold-dark);
+    text-underline-offset: 3px;
+}
+
+.grocery-reset:hover {
+    color: #654d52;
+}
+
 /* =========================
    ACTIVITY: VOICE NOTE (iMessage)
 ========================= */
@@ -1340,6 +1482,10 @@ section {
 
     .quote-card p {
         font-size: 1.2rem;
+    }
+
+    .grocery-checklist {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -316,6 +316,9 @@ function rememberReveal() {
 const dayPickBtn =
     document.getElementById("dayPickBtn");
 
+const dayPickLabel =
+    document.getElementById("dayPickLabel");
+
 const weekStrip =
     document.getElementById("weekStrip");
 
@@ -435,6 +438,150 @@ function renderWeekStrip() {
 }
 
 
+function getWeekKey() {
+
+    const monday = new Date();
+
+    monday.setHours(0, 0, 0, 0);
+    monday.setDate(
+        monday.getDate() - ((monday.getDay() + 6) % 7)
+    );
+
+    return [
+        monday.getFullYear(),
+        String(monday.getMonth() + 1).padStart(2, "0"),
+        String(monday.getDate()).padStart(2, "0")
+    ].join("-");
+}
+
+
+function renderWeekendGroceries() {
+
+    const groceryItems = [
+        "Tomatoes",
+        "Onion",
+        "Bell pepper",
+        "Cooking cream",
+        "Cheese",
+        "Pasta",
+        "Garlic",
+        "Xawash spice mix"
+    ];
+
+    const weekKey =
+        getWeekKey();
+
+    const storageKey =
+        `sahanGroceryList:${weekKey}`;
+
+    let checkedItems = [];
+
+    try {
+        const savedItems =
+            JSON.parse(localStorage.getItem(storageKey) || "[]");
+
+        if (Array.isArray(savedItems)) {
+            checkedItems = savedItems.filter(
+                index => Number.isInteger(index) &&
+                    index >= 0 &&
+                    index < groceryItems.length
+            );
+        }
+    } catch {
+        checkedItems = [];
+    }
+
+    const checked = new Set(checkedItems);
+
+    activity.classList.add("weekend-grocery-activity");
+    activity.innerHTML = `
+        <div class="grocery-list-heading">
+            <h3>Grocery list</h3>
+            <span id="groceryProgress" aria-live="polite"></span>
+        </div>
+        <ul class="grocery-checklist">
+            ${groceryItems.map((item, index) => `
+                <li>
+                    <label class="grocery-check-item${checked.has(index) ? " checked" : ""}">
+                        <input type="checkbox" data-grocery-index="${index}"${checked.has(index) ? " checked" : ""}>
+                        <span class="grocery-checkmark" aria-hidden="true"></span>
+                        <span class="grocery-ingredient">${item}</span>
+                    </label>
+                </li>
+            `).join("")}
+        </ul>
+        <button class="grocery-reset" type="button">Reset</button>
+        <p class="grocery-sweet-note"><em>Don't forget to get a sweet treat on your way out, Darlin</em></p>
+    `;
+
+    const progress =
+        document.getElementById("groceryProgress");
+
+    function updateProgress() {
+
+        progress.textContent =
+            checked.size === groceryItems.length
+                ? "All done"
+                : `${checked.size}/${groceryItems.length}`;
+    }
+
+    function saveCheckedItems() {
+
+        try {
+            localStorage.setItem(
+                storageKey,
+                JSON.stringify([...checked])
+            );
+        } catch {
+            /* Keep the current checklist usable without storage. */
+        }
+    }
+
+    activity
+        .querySelectorAll("[data-grocery-index]")
+        .forEach(input => {
+
+            input.addEventListener("change", () => {
+
+                const index =
+                    Number(input.dataset.groceryIndex);
+
+                if (input.checked) {
+                    checked.add(index);
+                } else {
+                    checked.delete(index);
+                }
+
+                input.closest(".grocery-check-item")
+                    .classList.toggle("checked", input.checked);
+
+                saveCheckedItems();
+                updateProgress();
+            });
+        });
+
+    activity
+        .querySelector(".grocery-reset")
+        .addEventListener("click", () => {
+
+            checked.clear();
+
+            activity
+                .querySelectorAll("[data-grocery-index]")
+                .forEach(input => {
+                    input.checked = false;
+                    input.closest(".grocery-check-item")
+                        .classList.remove("checked");
+                });
+
+            saveCheckedItems();
+            updateProgress();
+        });
+
+    updateProgress();
+}
+
+
 /* =========================
    OPEN REVEAL
 ========================= */
@@ -450,26 +597,29 @@ function openReveal(dayNumber = today) {
     activePick = weekMenu[dayNumber] || null;
 
     resetReveal();
+    activity.classList.remove("weekend-grocery-activity");
+    revealEyebrow.classList.remove("hidden");
 
     revealModal.classList.remove("hidden");
 
     document.body.style.overflow = "hidden";
 
 
-    /* Weekend: the kitchen rests */
+    /* Weekend: shop for the week's featured recipe */
 
     if (!activePick) {
 
         revealClip.classList.add("hidden");
 
-        revealEyebrow.textContent =
-            "THE KITCHEN IS RESTING";
+        revealEyebrow.classList.add("hidden");
 
         revealTitle.textContent =
-            "See you on Monday.";
+            "Let's get the basket ready";
 
-        revealPrompt.textContent =
-            "Hibaq's picks come out Monday to Friday, each one hidden behind a little surprise.";
+        revealPrompt.textContent = "";
+        revealPrompt.classList.add("hidden");
+
+        renderWeekendGroceries();
 
         return;
     }
@@ -1455,3 +1605,7 @@ document.addEventListener(
 ========================= */
 
 renderWeekStrip();
+
+if (dayPickLabel && !todaysPick) {
+    dayPickLabel.textContent = "Grocery list";
+}
