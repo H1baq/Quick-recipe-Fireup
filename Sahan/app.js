@@ -263,9 +263,9 @@ const today = getToday();
 const todaysPick = weekMenu[today] || null;
 
 
-/* TEMP PREVIEW: set to false before the release commit. */
+/* Set true only when intentionally previewing every day. */
 
-const unlockAllDays = true;
+const unlockAllDays = false;
 
 
 /* The day currently open in the reveal modal */
