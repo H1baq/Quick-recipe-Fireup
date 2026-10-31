@@ -59,12 +59,16 @@ const weekMenu = {
         day: "Tuesday",
 
         activity: {
-            type: "quote",
-            quote: "People who love to ___ are always the best people.",
-            answer: "eat",
-            choices: ["cook", "eat", "dance"],
-            author: "Julia Child",
-            prompt: "Finish the quote to unlock today's dish."
+            type: "trivia",
+            question: "Which fact about Genghis Khan is true?",
+            answer: "He united Mongol tribes and founded the Mongol Empire.",
+            choices: [
+                "He united Mongol tribes and founded the Mongol Empire.",
+                "He was born in Rome.",
+                "He ruled ancient Egypt."
+            ],
+            fact: "In 1206, Temüjin was proclaimed Genghis Khan after uniting the Mongol tribes.",
+            prompt: "Pick the true fact to uncover Tuesday's dish."
         },
 
         recipe: {
@@ -217,6 +221,7 @@ const weekMenu = {
 const activityLabels = {
     voicenote: "VOICE NOTE",
     quote: "FINISH THE QUOTE",
+    trivia: "QUICK HISTORY QUESTION",
     scratch: "SCRATCH CARD",
     memory: "MEMORY MATCH",
     stir: "STIR THE POT"
@@ -258,10 +263,9 @@ const today = getToday();
 const todaysPick = weekMenu[today] || null;
 
 
-/* TESTING: every day opens, and reveals aren't remembered.
-   Set to false before going live. */
+/* TEMP PREVIEW: set to false before the release commit. */
 
-const unlockAllDays = false;
+const unlockAllDays = true;
 
 
 /* The day currently open in the reveal modal */
@@ -370,6 +374,9 @@ const stepsList =
 const revealSignoff =
     document.getElementById("revealSignoff");
 
+const challengePreviewBtn =
+    document.getElementById("challengePreviewBtn");
+
 
 /* Anything an activity needs to stop when the modal closes */
 
@@ -405,7 +412,7 @@ function renderWeekStrip() {
                             aria-label="${entry.day}${isOpen ? ", open" : ", locked"}"
                         >
                             <span>${entry.day.slice(0, 3)}</span>
-                            <small>${isToday ? "✦" : isOpen ? "🔓" : "🔒"}</small>
+                            <small>${isToday ? "TODAY" : isOpen ? "OPEN" : "LATER"}</small>
                         </button>
                     </li>
                 `;
@@ -430,7 +437,7 @@ function renderWeekStrip() {
                     }
 
                     showToast(
-                        `${weekMenu[number].day}'s pick unlocks on ${weekMenu[number].day} ✦`
+                        `${weekMenu[number].day}'s pick opens on ${weekMenu[number].day}`
                     );
                 }
             );
@@ -465,7 +472,9 @@ function renderWeekendGroceries() {
         "Cheese",
         "Pasta",
         "Garlic",
-        "Xawash spice mix"
+        "Xawash spice mix",
+        "Chicken",
+        "Baby spinach"
     ];
 
     const weekKey =
@@ -634,7 +643,7 @@ function openReveal(dayNumber = today) {
     setTeaser(recipe);
 
 
-    if (isRevealedToday()) {
+    if (unlockAllDays || isRevealedToday()) {
         showRecipe();
         return;
     }
@@ -789,7 +798,46 @@ function showRecipe() {
             ? "That's the week. A new pick is waiting on Monday ✦"
             : "Come back tomorrow for the next pick ✦";
 
+    if (challengePreviewBtn) {
+        challengePreviewBtn.classList.toggle(
+            "hidden",
+            !unlockAllDays || !activePick.activity
+        );
+
+        challengePreviewBtn.textContent =
+            `Try ${day}'s challenge`;
+    }
+
     recipeReveal.classList.remove("hidden");
+}
+
+
+function showChallenge() {
+
+    if (!activePick) {
+        return;
+    }
+
+    const { day, activity: dayActivity, recipe } =
+        activePick;
+
+    recipeReveal.classList.add("hidden");
+    revealClip.classList.remove("revealed");
+
+    revealEyebrow.textContent =
+        `${day.toUpperCase()} · ${activityLabels[dayActivity.type]}`;
+
+    revealTitle.textContent =
+        "Today's dish is a secret…";
+
+    revealPrompt.textContent =
+        dayActivity.prompt;
+
+    revealPrompt.classList.remove("hidden");
+
+    requestAnimationFrame(() => {
+        startActivity(dayActivity, recipe);
+    });
 }
 
 
@@ -810,6 +858,7 @@ function startActivity(dayActivity, recipe) {
     const activities = {
         voicenote: startVoicenote,
         quote: startQuote,
+        trivia: startTrivia,
         scratch: startScratch,
         memory: startMemory,
         stir: startStir
@@ -1168,6 +1217,54 @@ function startQuote(dayActivity) {
             );
         });
 
+
+    return () => clearTimeout(timer);
+}
+
+
+function startTrivia(dayActivity) {
+
+    activity.innerHTML = `
+        <div class="trivia-card">
+            <p class="trivia-question">${dayActivity.question}</p>
+            <div class="trivia-choices">
+                ${dayActivity.choices.map(choice => `
+                    <button class="trivia-choice" type="button" data-choice="${choice}">
+                        ${choice}
+                    </button>
+                `).join("")}
+            </div>
+            <p class="trivia-fact hidden">${dayActivity.fact}</p>
+        </div>
+    `;
+
+    const fact =
+        activity.querySelector(".trivia-fact");
+
+    const choices =
+        activity.querySelectorAll(".trivia-choice");
+
+    let timer;
+
+    choices.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            if (button.dataset.choice !== dayActivity.answer) {
+                button.classList.add("wrong");
+                button.disabled = true;
+                return;
+            }
+
+            button.classList.add("correct");
+            choices.forEach(choice => {
+                choice.disabled = true;
+            });
+
+            fact.classList.remove("hidden");
+            timer = setTimeout(winActivity, 2600);
+        });
+    });
 
     return () => clearTimeout(timer);
 }
@@ -1568,6 +1665,15 @@ if (closeRevealModal) {
     closeRevealModal.addEventListener(
         "click",
         closeReveal
+    );
+}
+
+
+if (challengePreviewBtn) {
+
+    challengePreviewBtn.addEventListener(
+        "click",
+        showChallenge
     );
 }
 

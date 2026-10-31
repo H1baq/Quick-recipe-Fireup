@@ -103,60 +103,17 @@ section {
 .hero {
     min-height: 100svh;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(270px, 0.72fr);
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: clamp(30px, 7vw, 100px);
 
     position: relative;
 
-    padding: 70px 10%;
+    padding: 72px 10%;
 
     text-align: left;
     overflow: hidden;
 
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(117, 78, 48, 0.18),
-            transparent 42%
-        ),
-        linear-gradient(
-            180deg,
-            #1a1512 0%,
-            #171310 100%
-        );
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 8% 12%;
-
-    border: 1px solid rgba(201, 170, 114, 0.08);
-
-    pointer-events: none;
-}
-
-.hero::after {
-    content: "SAHAN";
-
-    position: absolute;
-    left: 50%;
-    bottom: -70px;
-
-    transform: translateX(-50%);
-
-    font-family: "Fraunces", serif;
-    font-size: clamp(8rem, 20vw, 17rem);
-    line-height: 1;
-    letter-spacing: -8px;
-
-    color: rgba(244, 236, 223, 0.018);
-
-    pointer-events: none;
+    background: #292c29;
 }
 
 .hero-content {
@@ -164,24 +121,40 @@ section {
     z-index: 2;
 
     grid-column: 1 / -1;
-    width: min(760px, 100%);
+    width: min(680px, 100%);
 }
 
-.hero .eyebrow {
-    margin-bottom: 22px;
+.hero-kicker {
+    margin-bottom: 20px;
+    color: #f0c66f;
+    font-family: "Caveat", cursive;
+    font-size: 1.7rem;
+    font-weight: 500;
+    letter-spacing: 0;
 }
 
 .hero h1 {
     font-family: "Fraunces", serif;
 
-    font-size: clamp(3.6rem, 6.5vw, 6.6rem);
+    font-size: 6rem;
     font-weight: 400;
-    line-height: 0.9;
+    line-height: 0.86;
     letter-spacing: 0;
 
-    color: var(--cream);
+    color: #fff8e9;
 
-    margin-bottom: 30px;
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    display: block;
+    margin: 8px 0 0 0.5em;
+    color: #f0c66f;
+    font-family: "Caveat", cursive;
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height: 0.8;
+    transform: rotate(-3deg);
 }
 
 .hero-art {
@@ -197,8 +170,8 @@ section {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, rgba(23, 19, 16, 0.92) 0%, rgba(23, 19, 16, 0.72) 42%, rgba(23, 19, 16, 0.35) 100%),
-        linear-gradient(0deg, rgba(23, 19, 16, 0.5), transparent 58%);
+        linear-gradient(90deg, rgba(30, 34, 33, 0.94) 0%, rgba(30, 34, 33, 0.79) 35%, rgba(30, 34, 33, 0.3) 68%, rgba(30, 34, 33, 0.05) 100%),
+        linear-gradient(0deg, rgba(30, 34, 33, 0.2), transparent 42%);
 }
 
 .hero-art img {
@@ -206,73 +179,17 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 42%;
+    object-position: center 39%;
 }
 
 .hero-description {
-    color: var(--cream-soft);
+    max-width: 380px;
+    color: rgba(255, 248, 233, 0.88);
 
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.08rem;
+    line-height: 1.6;
 
-    margin-bottom: 38px;
-}
-
-.hero-signature {
-    position: absolute;
-    right: 5%;
-    bottom: 40px;
-
-    display: flex;
-    flex-direction: column;
-
-    text-align: right;
-
-    color: var(--muted);
-    z-index: 2;
-}
-
-.hero-signature span {
-    font-family: "Fraunces", serif;
-    font-size: 0.95rem;
-    letter-spacing: 4px;
-    color: var(--gold);
-}
-
-.hero-signature small {
-    font-size: 0.55rem;
-    letter-spacing: 3px;
-    margin-top: 4px;
-}
-
-.hero-float {
-    position: absolute;
-    z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-
-    color: var(--muted-dark);
-
-    font-size: 0.55rem;
-    letter-spacing: 2px;
-}
-
-.hero-float span {
-    color: var(--muted);
-}
-
-.hero-float-left {
-    left: 5%;
-    bottom: 42px;
-    text-align: left;
-}
-
-.hero-float-right {
-    right: 5%;
-    top: 42px;
-    text-align: right;
+    margin-bottom: 28px;
 }
 
 /* =========================
@@ -285,37 +202,31 @@ section {
     justify-content: center;
     gap: 12px;
 
-    background: transparent;
-    color: var(--cream);
+    background: #bd3c2f;
+    color: #fff8e9;
 
-    padding: 14px 25px;
+    padding: 14px 23px;
 
-    border: 1px solid var(--gold);
+    border: 1px solid #bd3c2f;
+    box-shadow: 4px 4px 0 #e8c373;
 
-    font-size: 0.7rem;
+    font-size: 0.76rem;
     font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    text-transform: none;
 
     transition:
         background 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .decision-btn:hover {
-    background: var(--gold);
-    color: var(--bg);
-    transform: translateY(-2px);
-}
-
-.decision-btn span {
-    color: var(--gold-light);
-    font-size: 1rem;
-}
-
-.decision-btn:hover span {
-    color: var(--bg);
+    background: #a92f25;
+    color: #fff8e9;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #e8c373;
 }
 
 
@@ -394,9 +305,10 @@ section {
     overflow-y: auto;
     overflow-x: hidden;
 
-    background: var(--card);
-
-    border: 1px solid var(--line);
+    background: #fff8eb;
+    color: #292d29;
+    border: 1px solid #9a3e34;
+    box-shadow: 7px 7px 0 rgba(14, 16, 15, 0.28);
 }
 
 /* =========================
@@ -415,6 +327,23 @@ section {
     line-height: 1.05;
 
     margin-bottom: 10px;
+    color: #282d2a;
+}
+
+.reveal-modal .close-btn {
+    background: #fff8eb;
+    color: #292d29;
+    border-color: #d7cdbb;
+}
+
+.reveal-modal .close-btn:hover {
+    background: #bd3c2f;
+    color: #fff8eb;
+    border-color: #bd3c2f;
+}
+
+.reveal-modal .eyebrow {
+    color: #a43c31;
 }
 
 .modal-meta {
@@ -451,6 +380,11 @@ section {
     padding-left: 20px;
 
     color: var(--cream-soft);
+}
+
+.reveal-modal .recipe-details ul,
+.reveal-modal .recipe-details ol {
+    color: #4a4b43;
 }
 
 .recipe-details li {
@@ -548,63 +482,60 @@ section {
 
 .week-strip {
     display: flex;
-    gap: 8px;
+    width: fit-content;
+    max-width: 100%;
+    gap: 0;
 
-    margin-top: 34px;
+    margin-top: 38px;
 
     list-style: none;
+    border-top: 1px solid rgba(255, 248, 233, 0.32);
 }
 
 .week-day {
-    width: 54px;
+    width: 82px;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 4px;
+    align-items: flex-start;
+    gap: 7px;
 
-    padding: 9px 0 8px;
+    padding: 12px 10px 10px;
 
-    background: rgba(23, 19, 16, 0.55);
-    color: var(--muted);
+    background: transparent;
+    color: rgba(255, 248, 233, 0.68);
 
-    border: 1px solid var(--line-soft);
+    border: 0;
+    border-bottom: 2px solid transparent;
 
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
 
     transition:
-        border-color 0.25s ease,
+        border-color 0.2s ease,
         color 0.25s ease;
 }
 
 .week-day small {
-    font-size: 0.7rem;
-    opacity: 0.6;
+    color: rgba(255, 248, 233, 0.54);
+    font-size: 0.52rem;
+    letter-spacing: 1px;
 }
 
 .week-day:hover {
-    border-color: var(--line);
+    color: #fff8e9;
 }
 
 .week-day.today {
-    color: var(--cream);
-    border-color: var(--gold);
-    background: rgba(201, 170, 114, 0.12);
-
-    animation: today-glow 2.4s ease-in-out infinite;
+    color: #fff8e9;
+    border-bottom-color: #bd3c2f;
+    background: transparent;
 }
 
 .week-day.today small {
-    color: var(--gold-light);
-    opacity: 1;
-}
-
-@keyframes today-glow {
-    0%, 100% { box-shadow: 0 0 0 rgba(201, 170, 114, 0); }
-    50% { box-shadow: 0 0 18px rgba(201, 170, 114, 0.35); }
+    color: #f0c66f;
 }
 
 /* =========================
@@ -708,11 +639,30 @@ section {
 }
 
 .recipe-reveal {
-    animation: rise-in 0.7s ease both;
+    animation: recipe-enter 0.28s ease both;
+}
+
+@keyframes recipe-enter {
+    from { transform: translateY(8px); }
+    to { transform: translateY(0); }
 }
 
 .recipe-reveal .modal-meta {
     margin-bottom: 0;
+}
+
+.challenge-preview-btn {
+    margin: 16px 0 0;
+    padding: 7px 0;
+    background: transparent;
+    border-bottom: 1px solid #bd3c2f;
+    color: #a43c31;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.challenge-preview-btn:hover {
+    color: #76281f;
 }
 
 .reveal-signoff {
@@ -1217,6 +1167,58 @@ section {
     animation: shake 0.35s ease;
 }
 
+.trivia-card {
+    padding: 20px;
+    background: #f0e7d9;
+    border-left: 3px solid #bd3c2f;
+    color: #292d29;
+}
+
+.trivia-question {
+    font-family: "Fraunces", serif;
+    font-size: 1.25rem;
+    line-height: 1.35;
+}
+
+.trivia-choices {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.trivia-choice {
+    padding: 11px 13px;
+    background: #fffaf0;
+    border: 1px solid #d8cbb9;
+    color: #353832;
+    text-align: left;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.trivia-choice:hover:not(:disabled) {
+    border-color: #bd3c2f;
+}
+
+.trivia-choice.correct {
+    background: #e4edda;
+    border-color: #829c6c;
+}
+
+.trivia-choice.wrong {
+    opacity: 0.48;
+    text-decoration: line-through;
+}
+
+.trivia-fact {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #d8cbb9;
+    color: #525548;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
 @keyframes pop {
     50% { transform: scale(1.15); }
 }
@@ -1429,39 +1431,30 @@ section {
     .hero {
         grid-template-columns: 1fr;
         gap: 0;
-        padding: 56px 20px 72px;
-        text-align: center;
-    }
-
-    .hero::before {
-        inset: 5% 6%;
+        padding: 62px 24px 74px;
+        text-align: left;
     }
 
     .hero h1 {
-        font-size: clamp(3rem, 13vw, 4.3rem);
+        font-size: 4.25rem;
         letter-spacing: 0;
     }
 
+    .hero h1 span {
+        margin-left: 0.35em;
+    }
+
     .hero-description {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .week-strip {
-        justify-content: center;
-        gap: 6px;
+        width: 100%;
     }
 
     .week-day {
-        width: 50px;
-    }
-
-    .hero-float {
-        display: none;
-    }
-
-    .hero-signature {
-        right: 25px;
-        bottom: 25px;
+        width: 20%;
+        padding: 11px 5px 9px;
     }
 
     .modal {
@@ -1476,6 +1469,15 @@ section {
         font-size: 2.2rem;
     }
 
+    .reveal-modal .modal-body {
+        padding: 25px 18px 20px;
+    }
+
+    .reveal-modal .modal-body h2 {
+        max-width: calc(100% - 42px);
+        font-size: 2rem;
+    }
+
     .reveal-clip {
         height: 190px;
     }
@@ -1485,7 +1487,22 @@ section {
     }
 
     .grocery-checklist {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .weekend-grocery-activity {
+        padding: 18px 12px 15px;
+    }
+
+    .grocery-check-item {
+        min-height: 44px;
+        gap: 7px;
+        padding: 8px;
+    }
+
+    .grocery-ingredient {
+        font-size: 0.76rem;
     }
 }
 
